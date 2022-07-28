@@ -9,6 +9,22 @@
                     <svg _ngcontent-tjo-c219="" cIcon="" name="cil-pen" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-chart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
                     </svg>
                 </button>
+
+                <div
+                class="modal"
+                tabindex="-1"
+                role="dialog"
+                [ngStyle]="{'display':displayStyle}">
+                <div class="modal-dialog" role="document" >
+                    <div class="modal-content" style="background-color: rgb(230, 230, 230);">
+                        <textarea _ngcontent-tjo-c222="" cformcontrol="" id="floatingTextarea2" placeholder="Leave a comment here" ng-reflect-ng-style="[object Object]" type="text" class="form-control" style="height: 100px; margin: 20px; max-width: 460px;"></textarea>                        
+                        <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button"
+                        (click)="closePopup()" style=" margin-bottom: 20px; max-width: 120px; margin-left: 350px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
+                        Modifier
+                        </button>    
+                    </div>
+                </div>
+            </div>
             </c-card-header>
           <c-card-body>
             <c-nav variant="tabs">

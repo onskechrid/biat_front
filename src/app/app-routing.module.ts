@@ -39,15 +39,13 @@ const routes: Routes = [
         path: 'tables',
         loadChildren: () =>
           import('./views/base/base.module').then((m) => m.BaseModule)
+      },
+      {
+        path: '404',
+        loadChildren: () =>
+          import('./views/pages/pages.module').then((m) => m.PagesModule)
       }
     ]
-  },
-  {
-    path: '404',
-    component: Page404Component,
-    data: {
-      title: 'Page 404'
-    }
   },
   {
     path: '500',
