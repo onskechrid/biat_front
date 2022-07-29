@@ -6,6 +6,7 @@ import { AddfonctionComponent } from './addfonction/addfonction.component';
 import { DatabaseComponent } from './database/database.component';
 import { EditfonctionComponent } from './editfonction/editfonction.component';
 import { FonctionsComponent } from './fonctions/fonctions.component';
+import { PowerbiComponent } from './powerbi/powerbi.component';
 import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes = [
@@ -55,6 +56,13 @@ const routes: Routes = [
         component: RegisterComponent,
         data: {
           title: 'Register page'
+        }
+      },
+      {
+        path: 'powerbi',
+        component: PowerbiComponent,
+        data: {
+          title: 'powerbi page'
         }
       }
     ]

@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 

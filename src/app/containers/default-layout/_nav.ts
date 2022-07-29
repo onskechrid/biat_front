@@ -11,7 +11,7 @@ export const navItems: INavData[] = [
     }
   },
   {
-    name: 'Base',
+    name: 'Conception',
     url: '/base/database',
     iconComponent: { name: 'cil-drop' }
   },

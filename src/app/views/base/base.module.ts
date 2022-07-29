@@ -43,6 +43,7 @@ import { FonctionsComponent } from './fonctions/fonctions.component';
 import { AddfonctionComponent } from './addfonction/addfonction.component';
 import { EditfonctionComponent } from './editfonction/editfonction.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -73,7 +74,7 @@ import { EditfonctionComponent } from './editfonction/editfonction.component';
     PaginationModule,
     PopoverModule,
     TableModule,
-    DocsComponentsModule,
+    DocsComponentsModule
   ],
   declarations: [
     DatabaseComponent,

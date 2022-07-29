@@ -1,30 +1,35 @@
 <c-card class="mb-4">
 
-  <form cForm class="d-flex" style="margin-top: 20px;">
-    <input style="border-width: 0px; margin-left: 20px; background-color:  rgb(231, 230, 230); border-radius: 20px; max-width: 850px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
   
-      <button cButton color="warning" class="position-relative mx-2" >
+  <c-input-group _ngcontent-tjo-c224="" class="mb-3 input-group" style="margin: 20px; max-width: 980px;">
+    <input #query style="background-color: rgb(240, 240, 240); border-width: 0px; border-radius: 20px; max-width: 780px;" _ngcontent-tjo-c224="" aria-describedby="button-addon2" aria-label="SQL command" cformcontrol="" placeholder="SQL command" type="text" class="form-control">
+    <button style="margin-right: 30px; margin-left: 5px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189); color: #3c4b64;" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" variant="outline" ng-reflect-color="secondary" ng-reflect-type="button" ng-reflect-variant="outline" class="btn btn-outline-secondary"> Apply </button>
+  
+    <button cButton color="warning" class="position-relative mx-2" style="border-radius: 5px;" routerLink="../powerbi">
+      <span class="visually-hidden">unread messages</span>
+      <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
+        <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary">
+        </path>
+      </svg>
+    </button>
+  
+    <a routerLink="../fonctions">
+      <button cButton color="secondary" type="button" class="position-relative mx-2">
+        <c-badge color="danger" position="top-end" shape="rounded-pill">99+</c-badge>
         <span class="visually-hidden">unread messages</span>
-        <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
+        <svg _ngcontent-tjo-c219="" cIcon="" name="cil-task" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: white;">
           <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary">
           </path>
         </svg>
-      </button>
-      <a routerLink="/addfonctions">
-        <button cButton color="secondary" type="button" class="position-relative mx-2">
-          <c-badge color="danger" position="top-end" shape="rounded-pill">99+</c-badge>
-          <span class="visually-hidden">unread messages</span>
-          <svg _ngcontent-tjo-c219="" cIcon="" name="cil-task" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: white;">
-            <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary">
-            </path>
-          </svg>
-        </button> </a>
-  </form>  
-     
-  <c-card  *ngFor="let table of tables; let i = index" _ngcontent-tjo-c224="" class="mb-4 card" style="margin: 10px;">
+      </button> 
+    </a>
+  </c-input-group>
+  
+  <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">   
+    <c-card  *ngFor="let table of tables; let i = index" _ngcontent-tjo-c224="" class="mb-4 card">
       <c-card-header _ngcontent-tjo-c224="" class="card-header">
-        <strong _ngcontent-tjo-c224=""> {{table}} </strong>
-        <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-warning" ng-reflect-active="false" ng-reflect-color="warning" ng-reflect-disabled="false" type="button" style="margin-left: 815px;">
+        <strong _ngcontent-tjo-c224="" style="text-transform: uppercase;"> {{table}} </strong>
+        <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-warning" ng-reflect-active="false" ng-reflect-color="warning" ng-reflect-disabled="false" type="button" style="margin-left: 780px;">
           <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-chart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
             <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary">
             </path>
@@ -33,26 +38,28 @@
       </c-card-header>
 
       <c-input-group _ngcontent-tjo-c224="" class="mb-3 input-group" style="margin: 20px;">
-      <input #query style="margin-bottom: 20px; background-color: rgb(250, 248, 248); border-width: 0px; border-radius: 20px;" _ngcontent-tjo-c224="" aria-describedby="button-addon2" aria-label="SQL command" cformcontrol="" placeholder="SQL command" type="text" class="form-control" style="max-width: 910px;">
-      <button _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" variant="outline" ng-reflect-color="secondary" ng-reflect-type="button" ng-reflect-variant="outline" class="btn btn-outline-secondary" (click)="apply(table, query.value)"> Apply </button>
+        <input #query style="background-color: rgb(240, 240, 240); border-width: 0px; border-radius: 20px; max-width: 860px;" _ngcontent-tjo-c224="" aria-describedby="button-addon2" aria-label="SQL command" cformcontrol="" placeholder="SQL command" type="text" class="form-control">
+        <button style=" margin-left: 5px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189); color: #3c4b64;" _ngcontent-tjo-c224="" cbutton="" id="button-addon2" type="button" variant="outline" ng-reflect-color="secondary" ng-reflect-type="button" ng-reflect-variant="outline" class="btn btn-outline-secondary" (click)="apply(table, query.value)"> Apply </button>
+
       </c-input-group>
       
-      <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin:15px; border-radius: 20px; ">
-        <table *ngFor="let res of stringed; let i = index" _ngcontent-tjo-c252="" ctable="" ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped" [hover]="true" cTable style="border-radius: 20px; background-color: rgb(250, 248, 248);">
-                <thead *ngIf="i == 0" _ngcontent-tjo-c252="">
-                   <tr _ngcontent-tjo-c252="">
-                      <th _ngcontent-tjo-c252="" scope="col">#</th>
-                      <th *ngFor="let h of res" _ngcontent-tjo-c252="" scope="col">{{h}}</th>
-                   </tr>
-                </thead>
-                <tbody  *ngIf="i > 0" _ngcontent-tjo-c252="">
-                   <tr _ngcontent-tjo-c252="">
-                      <th _ngcontent-tjo-c252="" scope="row">{{i}}</th>
-                      <td *ngFor="let r of res" _ngcontent-tjo-c252="">{{r}}</td>
-                   </tr>
-                </tbody>
-             </table>
+      <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">
+        <table *ngFor="let res of stringed; let i = index" [bordered]="true" cTable style="table-layout: fixed; width: 100%; background-color: rgb(250, 248, 248);">
+          <thead *ngIf="i == 0" cTableColor="dark">
+             <tr>
+                <th scope="col">#</th>
+                <th *ngFor="let h of res" scope="col">{{h}}</th>
+             </tr>
+          </thead>
+          <tbody  *ngIf="i > 0">
+             <tr>
+                <th scope="row">{{i}}</th>
+                <td *ngFor="let r of res">{{r}}</td>
+             </tr>
+          </tbody>
+       </table>
       </c-card-body>
-  </c-card>
+    </c-card>
+  </c-card-body>
 
 </c-card>

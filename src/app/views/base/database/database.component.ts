@@ -5,6 +5,7 @@ import * as FileSaver from 'file-saver';
 import { Component, OnInit } from '@angular/core';  
 import * as XLSX from 'xlsx';
 import {HttpClient} from '@angular/common/http';
+
 class Content{
   content : string;
   constructor(cc : string){
