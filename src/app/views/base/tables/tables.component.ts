@@ -9,9 +9,40 @@ import { Component } from '@angular/core';
 export class TablesComponent {
 
   tables : string[];
+  result : string;
+  stringed : any[][] = [[]];
   constructor(private http : HttpClient) { }
   ngOnInit(): void {
     let baseApiUrl = "http://localhost:3000/get-tables"
     this.http.get<string[]>(baseApiUrl).subscribe(res => {this.tables = res;})
+  }
+
+  apply(table_name : string, query : string){
+    this.stringed = [[]];
+    console.log(table_name);
+    console.log(query);
+    
+    let baseApiUrl = "http://localhost:3000/query/"+table_name
+    this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
+      console.log(res);
+      //let obj = JSON.parse(res);
+      this.result = res;
+      Object.keys(res[0]).forEach(e => {
+        this.stringed[0].push(e);
+      })
+      this.stringed.push([]);
+      console.log(this.stringed);
+      let r = 1;
+      res.forEach(k => {
+        Object.values(k).forEach(t => {
+          console.log(t);
+          
+          this.stringed[r].push(t);
+        });
+        r++;
+        this.stringed.push([]);
+      })
+      this.stringed.pop();
+    })
   }
 }

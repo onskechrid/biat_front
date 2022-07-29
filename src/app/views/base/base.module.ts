@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule }  from '@angular/forms';
 // CoreUI Modules
 import {
   AccordionModule,
@@ -57,6 +57,7 @@ import { EditfonctionComponent } from './editfonction/editfonction.component';
     UtilitiesModule,
     SharedModule,
     ListGroupModule,
+    FormsModule,
     IconModule,
     ListGroupModule,
     PlaceholderModule,

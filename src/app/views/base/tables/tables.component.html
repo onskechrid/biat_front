@@ -21,7 +21,7 @@
         </button> </a>
   </form>  
      
-  <c-card  *ngFor="let table of tables" _ngcontent-tjo-c224="" class="mb-4 card" style="margin: 10px;">
+  <c-card  *ngFor="let table of tables; let i = index" _ngcontent-tjo-c224="" class="mb-4 card" style="margin: 10px;">
       <c-card-header _ngcontent-tjo-c224="" class="card-header">
         <strong _ngcontent-tjo-c224=""> {{table}} </strong>
         <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-warning" ng-reflect-active="false" ng-reflect-color="warning" ng-reflect-disabled="false" type="button" style="margin-left: 815px;">
@@ -33,37 +33,22 @@
       </c-card-header>
 
       <c-input-group _ngcontent-tjo-c224="" class="mb-3 input-group" style="margin: 20px;">
-      <input style="margin-bottom: 20px; background-color: rgb(250, 248, 248); border-width: 0px; border-radius: 20px;" _ngcontent-tjo-c224="" aria-describedby="button-addon2" aria-label="SQL command" cformcontrol="" placeholder="SQL command" type="text" class="form-control" style="max-width: 910px;">
-      <button _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" variant="outline" ng-reflect-color="secondary" ng-reflect-type="button" ng-reflect-variant="outline" class="btn btn-outline-secondary"> Apply </button>
+      <input #query style="margin-bottom: 20px; background-color: rgb(250, 248, 248); border-width: 0px; border-radius: 20px;" _ngcontent-tjo-c224="" aria-describedby="button-addon2" aria-label="SQL command" cformcontrol="" placeholder="SQL command" type="text" class="form-control" style="max-width: 910px;">
+      <button _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" variant="outline" ng-reflect-color="secondary" ng-reflect-type="button" ng-reflect-variant="outline" class="btn btn-outline-secondary" (click)="apply(table, query.value)"> Apply </button>
       </c-input-group>
       
-      <c-card-body _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin:15px; border-radius: 20px; ">
-        <table _ngcontent-tjo-c252="" ctable="" ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped" [hover]="true" cTable style="border-radius: 20px; background-color: rgb(250, 248, 248);">
-                <thead _ngcontent-tjo-c252="">
+      <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin:15px; border-radius: 20px; ">
+        <table *ngFor="let res of stringed; let i = index" _ngcontent-tjo-c252="" ctable="" ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped" [hover]="true" cTable style="border-radius: 20px; background-color: rgb(250, 248, 248);">
+                <thead *ngIf="i == 0" _ngcontent-tjo-c252="">
                    <tr _ngcontent-tjo-c252="">
                       <th _ngcontent-tjo-c252="" scope="col">#</th>
-                      <th _ngcontent-tjo-c252="" scope="col">Class</th>
-                      <th _ngcontent-tjo-c252="" scope="col">Heading</th>
-                      <th _ngcontent-tjo-c252="" scope="col">Heading</th>
+                      <th *ngFor="let h of res" _ngcontent-tjo-c252="" scope="col">{{h}}</th>
                    </tr>
                 </thead>
-                <tbody _ngcontent-tjo-c252="">
+                <tbody  *ngIf="i > 0" _ngcontent-tjo-c252="">
                    <tr _ngcontent-tjo-c252="">
-                      <th _ngcontent-tjo-c252="" scope="row">1</th>
-                      <td _ngcontent-tjo-c252="">Mark</td>
-                      <td _ngcontent-tjo-c252="">Otto</td>
-                      <td _ngcontent-tjo-c252="">@mdo</td>
-                   </tr>
-                   <tr _ngcontent-tjo-c252="">
-                      <th _ngcontent-tjo-c252="" scope="row">2</th>
-                      <td _ngcontent-tjo-c252="">Jacob</td>
-                      <td _ngcontent-tjo-c252="">Thornton</td>
-                      <td _ngcontent-tjo-c252="">@fat</td>
-                   </tr>
-                   <tr _ngcontent-tjo-c252="">
-                      <th _ngcontent-tjo-c252="" scope="row">3</th>
-                      <td _ngcontent-tjo-c252="" colspan="2">Larry the Bird</td>
-                      <td _ngcontent-tjo-c252="">@twitter</td>
+                      <th _ngcontent-tjo-c252="" scope="row">{{i}}</th>
+                      <td *ngFor="let r of res" _ngcontent-tjo-c252="">{{r}}</td>
                    </tr>
                 </tbody>
              </table>

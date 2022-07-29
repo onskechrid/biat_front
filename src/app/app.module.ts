@@ -77,6 +77,7 @@ const APP_CONTAINERS = [
     NavModule,
     ButtonModule,
     FormModule,
+    FormsModule,
     UtilitiesModule,
     ButtonGroupModule,
     ReactiveFormsModule,
