@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as pbi from 'powerbi-client';
 import { environment } from 'src/environments/environment';
+import { Function } from './function.model';
 
 @Component({
   selector: 'app-fonctions',
@@ -11,11 +13,14 @@ import { environment } from 'src/environments/environment';
 
 export class FonctionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
+  functions : Function[] = [];
+  
   ngOnInit(): void {
+    let baseApiUrl = "http://localhost:3000/show-function"
+    this.http.get<Function[]>(baseApiUrl).subscribe(res => {this.functions = res;})
   }
-
   report: pbi.Embed;
   @ViewChild('reportContainer', { static: false }) reportContainer: ElementRef;
 
@@ -52,5 +57,6 @@ export class FonctionsComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
+  
   
 }

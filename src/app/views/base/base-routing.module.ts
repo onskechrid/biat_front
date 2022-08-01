@@ -45,7 +45,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'editfonction',
+        path: 'editfonction/:id',
         component: EditfonctionComponent,
         data: {
           title: 'Edit-function page'

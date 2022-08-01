@@ -2,7 +2,8 @@
 
     <c-card _ngcontent-tjo-c224="" class="mb-4 card" style="margin: 10px;">
         <c-card-header _ngcontent-tjo-c224="" class="card-header" style="background-color: rgb(240,240,240);">
-            <strong _ngcontent-tjo-c224=""> chnouwa taamel el fonction </strong>
+            <strong  _ngcontent-tjo-c224=""> {{function_name}} </strong>
+            <input #name value="{{function_name}}" type="hidden"/>
             <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button" style="margin-left: 700px;" (click)="openPopup()">
                 <svg _ngcontent-tjo-c219="" cIcon="" name="cil-pen" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-chart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
                 </svg>
@@ -15,9 +16,9 @@
                 [ngStyle]="{'display':displayStyle}">
                 <div class="modal-dialog" role="document" >
                     <div class="modal-content" style="background-color: rgb(230, 230, 230);">
-                        <textarea _ngcontent-tjo-c222="" cformcontrol="" id="floatingTextarea2" placeholder="Leave a comment here" ng-reflect-ng-style="[object Object]" type="text" class="form-control" style="height: 100px; margin: 20px; max-width: 460px;"></textarea>                        
+                        <textarea #newName _ngcontent-tjo-c222="" cformcontrol="" id="floatingTextarea2" placeholder="Leave a comment here" ng-reflect-ng-style="[object Object]" type="text" class="form-control" style="height: 100px; margin: 20px; max-width: 460px;"></textarea>                        
                         <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button"
-                        (click)="closePopup()" style=" margin-bottom: 20px; max-width: 120px; margin-left: 350px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
+                        (click)="closePopup(newName.value)" style=" margin-bottom: 20px; max-width: 120px; margin-left: 350px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
                         Modifier
                         </button>    
                     </div>
@@ -26,44 +27,30 @@
         </c-card-header>
 
         <form cForm class="d-flex" style="margin-top: 20px;">
-            <input style="border-width: 0px; margin-left: 20px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-            <button _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Apply </button>
+            <input #qer style="border-width: 0px; margin-left: 20px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+            <button (click)="apply('x', qer.value )" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Apply </button>
         </form>
 
         <c-card-body _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(240, 240, 240); margin:15px; border-radius: 20px; ">
-        <table _ngcontent-tjo-c252="" ctable="" ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped">
-                <thead _ngcontent-tjo-c252="">
+        <table *ngFor="let res of stringed; let i = index" _ngcontent-tjo-c252="" ctable="" ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped">
+                <thead *ngIf="i == 0" _ngcontent-tjo-c252="">
                     <tr _ngcontent-tjo-c252="">
                         <th _ngcontent-tjo-c252="" scope="col">#</th>
-                        <th _ngcontent-tjo-c252="" scope="col">Class</th>
-                        <th _ngcontent-tjo-c252="" scope="col">Heading</th>
-                        <th _ngcontent-tjo-c252="" scope="col">Heading</th>
+                        <th *ngFor="let h of res" _ngcontent-tjo-c252="" scope="col">{{h}}</th>
                     </tr>
                 </thead>
-                <tbody _ngcontent-tjo-c252="">
+                <tbody  *ngIf="i > 0" _ngcontent-tjo-c252="">
                     <tr _ngcontent-tjo-c252="">
-                        <th _ngcontent-tjo-c252="" scope="row">1</th>
-                        <td _ngcontent-tjo-c252="">Mark</td>
-                        <td _ngcontent-tjo-c252="">Otto</td>
-                        <td _ngcontent-tjo-c252="">@mdo</td>
+                        <th _ngcontent-tjo-c252="" scope="row">{{i}}</th>
+                        <td *ngFor="let r of res" _ngcontent-tjo-c252="">{{r}}</td>
                     </tr>
-                    <tr _ngcontent-tjo-c252="">
-                        <th _ngcontent-tjo-c252="" scope="row">2</th>
-                        <td _ngcontent-tjo-c252="">Jacob</td>
-                        <td _ngcontent-tjo-c252="">Thornton</td>
-                        <td _ngcontent-tjo-c252="">@fat</td>
-                    </tr>
-                    <tr _ngcontent-tjo-c252="">
-                        <th _ngcontent-tjo-c252="" scope="row">3</th>
-                        <td _ngcontent-tjo-c252="" colspan="2">Larry the Bird</td>
-                        <td _ngcontent-tjo-c252="">@twitter</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </c-card-body>
     </c-card>
 
-    <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
+    <button (click)="save(name.value, qer.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
     ng-reflect-color="" ng-reflect-disabled="false" type="button"
     style="margin-bottom: 20px; margin-left: 900px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
         Enregistrer
