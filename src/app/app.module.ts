@@ -46,7 +46,6 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './views/pages/login/auth.service';
 import { PowerbiComponent } from './views/base/powerbi/powerbi.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -107,7 +106,6 @@ const APP_CONTAINERS = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     IconSetService,
-    AuthService,
     Title
   ],
   bootstrap: [AppComponent],

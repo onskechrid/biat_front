@@ -1,77 +1,43 @@
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
-<ng-container>
-  <c-container [fluid]="true">
-    <button
-      toggle="visible"
-      cHeaderToggler
-      [cSidebarToggle]="sidebarId"
-      class="ps-1"
-    >
-      <svg cIcon
-        name="cilMenu"
-        size="lg"
-      ></svg>
-    </button>
-    <c-header-nav class="d-none d-lg-flex me-auto">
-      <c-nav-item>
-        <a cNavLink routerLink="/dashboard" routerLinkActive="active">
-          Dashboard
-        </a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/settings" routerLinkActive="active">
-          Settings
-        </a>
-      </c-nav-item>
-    </c-header-nav>
-
-    <c-header-nav class="ms-3">
-      <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
-    </c-header-nav>
-
-  </c-container>
-  <c-header-divider></c-header-divider>
-  <c-container [fluid]="true">
-    <c-breadcrumb-router class="ms-2"></c-breadcrumb-router>
-  </c-container>
-</ng-container>
-<!--</c-header>-->
-
-<ng-template #userDropdown>
-  <c-dropdown alignment="end" variant="nav-item">
-    <button
-      cButton
-      color=""
-      [caret]="false"
-      cDropdownToggle
-      class="py-0"
-    >
-      <c-avatar
-        cTextColor="primary"
-        shape="rounded-1"
-        size="md"
-        src="./assets/img/avatars/8.jpg"
-        status="success"
+  <ng-container>
+    <c-container [fluid]="true">
+      <button
+        toggle="visible"
+        cHeaderToggler
+        [cSidebarToggle]="sidebarId"
+        class="ps-1"
       >
-      </c-avatar>
-    </button>
-    <ul cDropdownMenu class="pt-0 pr-5 w-auto">
-      <li>
-        <a routerLink="../../../views/pages/page404" cDropdownItem>
-          <svg cIcon class="me-2" name="cilUser"></svg>
-          Profile
-        </a>
-      </li>
-      <li>
-        <a routerLink="../login" cDropdownItem>
-          <svg cIcon class="me-2" name="cilLockLocked"></svg>
-          Lock Account
-        </a>
-      </li>
-    </ul>
-  </c-dropdown>
-</ng-template>
+        <svg cIcon
+          name="cilMenu"
+          size="lg"
+        ></svg>
+      </button>
+      <c-header-nav class="d-none d-lg-flex me-auto">
+        <c-nav-item>
+          <a cNavLink routerLink="/users" routerLinkActive="active">Utilisateurs</a>
+        </c-nav-item>
+        <c-nav-item>
+          <a cNavLink routerLink="/fonctions" routerLinkActive="active">
+            Fonctions
+          </a>
+        </c-nav-item>
+        <c-nav-item>
+          <a cNavLink routerLink="/historique" routerLinkActive="active">
+            Nouvelle fonction
+          </a>
+        </c-nav-item>
+      </c-header-nav>
+      <strong style="color: orangered; text-align: end;">esm illi connecté</strong>
 
+    </c-container>
+    <c-header-divider></c-header-divider>
+    <c-container [fluid]="true">
+      <c-breadcrumb-router class="ms-2"></c-breadcrumb-router>
+    </c-container>
+  </ng-container>
+
+
+  
+  <!--</c-header>-->
+  
+  

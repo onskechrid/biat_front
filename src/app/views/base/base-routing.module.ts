@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from '../pages/register/register.component';
 import { AddfonctionComponent } from './addfonction/addfonction.component';
 
 import { DatabaseComponent } from './database/database.component';
@@ -8,19 +7,21 @@ import { EditfonctionComponent } from './editfonction/editfonction.component';
 import { FonctionsComponent } from './fonctions/fonctions.component';
 import { PowerbiComponent } from './powerbi/powerbi.component';
 import { TablesComponent } from './tables/tables.component';
+import { HistoriqueComponent} from './historique/historique.component'
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Base',
+      title: 'Base de données',
     },
     children: [
       {
         path: 'database',
         component: DatabaseComponent,
         data: {
-          title: 'Database',
+          title: 'Conception',
         }
       },
       {
@@ -34,35 +35,42 @@ const routes: Routes = [
         path: 'fonctions',
         component: FonctionsComponent,
         data: {
-          title: 'Fonctions Page'
+          title: 'Fonctions'
+        }
+      },
+      {
+        path: 'historique',
+        component: HistoriqueComponent,
+        data: {
+          title: 'Historique des fonctions'
         }
       },
       {
         path: 'addfonction',
         component: AddfonctionComponent,
         data: {
-          title: 'Add-function page'
+          title: 'AJouter une fonction'
         }
       },
       {
         path: 'editfonction/:id',
         component: EditfonctionComponent,
         data: {
-          title: 'Edit-function page'
-        }
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-        data: {
-          title: 'Register page'
+          title: 'Modifier une fonction'
         }
       },
       {
         path: 'powerbi',
         component: PowerbiComponent,
         data: {
-          title: 'powerbi page'
+          title: 'Powerbi'
+        }
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: {
+          title: 'Utilisateurs'
         }
       }
     ]
