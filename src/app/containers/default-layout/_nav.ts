@@ -4,32 +4,32 @@ export const navItems: INavData[] = [
   {
     name: 'Accueil',
     url: '/dashboard',
-    iconComponent: { name: 'cil-speedometer' }
+    iconComponent: { name: 'cil-home' }
   },
   {
     name: 'Conception',
     url: '/base/database',
-    iconComponent: { name: 'cil-drop' }
+    iconComponent: { name: 'cil-pen' }
   },
   {
     name: 'Tables',
     url: '/base/tables',
-    iconComponent: { name: 'cil-pencil' }
+    iconComponent: { name: 'cil-border-all' }
   },
   {
     name: 'Fonctions',
     url: '/base/fonctions',
-    iconComponent: { name: 'cil-pencil' }
+    iconComponent: { name: 'cil-Task' }
   },
   {
     name: 'Historique des fonctions',
     url: '/base/historique',
-    iconComponent: { name: 'cil-pencil' }
+    iconComponent: { name: 'cil-history' }
   },
   {
     name: 'Utilisateurs',
     url: '/base/users',
-    iconComponent: { name: 'cil-pencil' }
+    iconComponent: { name: 'cil-user' }
   }
   
 ];
