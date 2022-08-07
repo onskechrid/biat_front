@@ -3,18 +3,15 @@
       <form cForm class="d-flex" style="margin-top: 20px;">      
         <button _ngcontent-tjo-c219="" (click)="openPopup()" cbutton="" variant="ghost" class="me-1 btn btn-sm" ng-reflect-variant="ghost" ng-reflect-active="false"
         ng-reflect-color="" ng-reflect-disabled="false" type="button" style="width: 100px; border-radius: 20px; margin-left: 830px; background-color: #3c4b64; border-color: #3c4b64; color: white;" >
-          import
+          Importer
         </button>
 
         <c-dropdown variant="btn-group">
-          <button _ngcontent-tjo-c219="" cButton cDropdownToggle class="me-1 btn btn-sm"
+          <button _ngcontent-tjo-c219="" (click)="readAsCSV()" cButton class="me-1 btn btn-sm"
           ng-reflect-active="false" ng-reflect-color="primary" ng-reflect-disabled="false" 
           type="button" style="width: 100px; border-radius: 20px; background-color: #3c4b64; border-color: #3c4b64; color: white;">
-            export
+            Exporter
           </button>
-          <ul cDropdownMenu>
-            <li><a cDropdownItem (click)="readAsCSV()">CSV</a></li>
-          </ul>
         </c-dropdown>
       </form>  
     <div class="modal col-auto" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
