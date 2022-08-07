@@ -53,9 +53,14 @@
               <c-tab-pane class="p-3 preview" role="tabpanel">
                 <h4> {{fun.name}} </h4>
                 <form cForm class="d-flex" style="margin-top: 20px;">
+                  <label>Main Query</label>
                     <input #qer value="{{fun.query}}" style="border-width: 0px; margin-left: 20px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+                    <p *ngIf="visib == true" style="color: red;">Error!</p>
                     <button  (click)="apply('x', qer.value )" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Apply </button>
                 </form>
+                <br>
+                <label>Error Query</label>
+                <input #qererr value="{{fun.query_error}}" style="border-width: 0px; margin-left: 20px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
                 <c-card style="background-color: rgb(240, 240, 240); margin:15px; border-radius: 20px; border-color: rgb(240, 240, 240); padding: 20px;">
                 <table *ngFor="let res of stringed; let i = index" [bordered]="true" cTable ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped" style="table-layout: fixed; width: 100%; background-color: rgb(250, 248, 248);">
                   <thead *ngIf="i == 0" cTableColor="dark">
@@ -75,14 +80,28 @@
                    </c-card>
               </c-tab-pane>
               <c-tab-pane class="p-3 preview" role="tabpanel">
-
+                <p *ngIf="error == true">You have some errors in this function</p>
+                <p *ngIf="error == false">You have no errors.</p>
+                <button *ngIf="error == true" (click)="showExcel()" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Show Excel </button>
+                <table hidden name="excel-table" >
+                      <div *ngFor="let res of stringed1; let i = index" >
+                      <tr *ngIf="i == 0" _ngcontent-tjo-c252="">
+                          <th _ngcontent-tjo-c252="" scope="col">#</th>
+                          <th *ngFor="let h of res" _ngcontent-tjo-c252="" scope="col">{{h}}</th>
+                      </tr>
+                      <tr  *ngIf="i > 0" _ngcontent-tjo-c252="">
+                          <th _ngcontent-tjo-c252="" scope="row">{{i}}</th>
+                          <td *ngFor="let r of res" _ngcontent-tjo-c252="">{{r}}</td>
+                      </tr>
+                      </div>
+              </table>
               </c-tab-pane>
             </c-tab-content>
           </c-card-body>
         </c-card>
     </c-col>
         
-    <button (click)="save(name.value, qer.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
+    <button (click)="save(name.value, qer.value, qererr.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
     ng-reflect-color="" ng-reflect-disabled="false" type="button"
     style="margin-bottom: 20px; margin-left: 900px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
         Modifier

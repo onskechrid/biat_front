@@ -4,7 +4,11 @@
   style="border-color: #3c4b64; background-color: #3c4b64; margin: 20px; margin-left: 760px; max-width: 250px;" routerLink="../addfonction"> 
       Ajouter une nouvelle fonction
   </button>
-
+  <button _ngcontent-tjo-c219="" cbutton="" shape="rounded-pill" class="me-1 btn btn-primary rounded-pill ng-star-inserted" 
+  ng-reflect-shape="rounded-pill" ng-reflect-color="primary" type="button" 
+  style="border-color: #3c4b64; background-color: #3c4b64; margin: 20px; margin-left: 760px; max-width: 250px;" (click)="checkfns()"> 
+      Check all functions
+  </button>
     
   <c-card id="someAnchorage" class="card" style="display: block; margin-left: 20px; margin-right: 20px; margin-bottom: 20px; border-radius: 20px; background-color: rgb(240,240,240); border-width: 0px;">
     <c-card style="border-width: 0px; margin: 20px;">
@@ -15,7 +19,7 @@
                 <span style="color: #3c4b64;"> {{fun.name}} </span>
              </div>
              <div class="text-medium-emphasis small progress-group-header">
-                esm elli aamalha  
+                Last Modified : {{fun.last_edit}} 
                 <button cButton style="background-color: rgb(249,177,21); color:#3c4b64; border-color:rgb(249,177,21);" class="ms-auto position-relative mx-2" >
                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
                       <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary"/>
@@ -30,10 +34,9 @@
                       </path>
                    </svg>
                 </button>
-                <button cButton style="border-color: rgb(229, 83, 83); background-color: rgb(229, 83, 83);" type="button" class="position-relative mx-2" routerLink="../deletefonction">
+                <button cButton style="border-color: rgb(229, 83, 83); background-color: rgb(229, 83, 83);" type="button" class="position-relative mx-2" (click)="del(fun.id)">
                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-trash" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: white;">
-                      <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary">
-                      </path>
+                     
                    </svg>
                 </button>
              </div>
@@ -43,7 +46,7 @@
                 <span> {{fun.name}} </span>
              </div>
              <div class="text-medium-emphasis small progress-group-header">
-                esm elli aamalha  
+              Last Modified : {{fun.last_edit}}   
                 <button cButton style="background-color: rgb(249,177,21); color:#3c4b64; border-color:rgb(249,177,21);" class="ms-auto position-relative mx-2" >
                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
                       <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary"/>
@@ -58,7 +61,7 @@
                       </path>
                    </svg>
                 </button>
-                <button cButton style="border-color: rgb(229, 83, 83); background-color: rgb(229, 83, 83);" type="button" class="position-relative mx-2" routerLink="../deletefonction">
+                <button cButton style="border-color: rgb(229, 83, 83); background-color: rgb(229, 83, 83);" type="button" class="position-relative mx-2" (click)="del(fun.id)">
                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-trash" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: white;">
                       <path fill="var(--ci-primary-color, currentColor)" d="M450.27,348.569,406.6,267.945V184c0-83.813-68.187-152-152-152s-152,68.187-152,152v83.945L58.928,348.568A24,24,0,0,0,80.031,384h86.935c-.238,2.636-.367,5.3-.367,8a88,88,0,0,0,176,0c0-2.7-.129-5.364-.367-8h86.935a24,24,0,0,0,21.1-35.431ZM310.6,392a56,56,0,1,1-111.419-8H310.018A56.14,56.14,0,0,1,310.6,392ZM93.462,352,134.6,276.055V184a120,120,0,0,1,240,0v92.055L415.736,352Z" class="ci-primary">
                       </path>

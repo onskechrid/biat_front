@@ -52,9 +52,9 @@ export class AddfonctionComponent implements OnInit {
       this.stringed.pop();
     })
   }
-  save(name : string, query : string){
+  save(name : string, query : string, querr : string){
     let baseApiUrl = "http://localhost:3000/add-function";
-    this.http.post<any>(baseApiUrl, {query : query, status : 1, name : name}).subscribe(res => {
+    this.http.post<any>(baseApiUrl, {query_error: querr, query : query, status : 1, name : name}).subscribe(res => {
       console.log(res);
     })
   }

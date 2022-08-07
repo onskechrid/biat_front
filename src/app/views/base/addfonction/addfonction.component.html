@@ -38,8 +38,8 @@
             <button (click)="apply('x', qer.value )" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Apply </button>
         </form>
         <form cForm class="d-flex" style="margin-top: 20px;">
-            <input #qer style="border-width: 0px; margin-left: 20px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-            <button (click)="apply('x', qer.value )" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Apply </button>
+            <input #qererr style="border-width: 0px; margin-left: 20px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+            <button (click)="apply('x', qererr.value )" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Apply </button>
         </form>
 
         <c-card-body _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(240, 240, 240); margin:15px; border-radius: 20px; ">
@@ -61,7 +61,7 @@
         </c-card-body>
     </c-card>
 
-    <button (click)="save(name.value, qer.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
+    <button (click)="save(name.value, qer.value, qererr.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
     ng-reflect-color="" ng-reflect-disabled="false" type="button" routerLink="../fonctions"
     style="margin-bottom: 20px; margin-left: 900px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
         Enregistrer
