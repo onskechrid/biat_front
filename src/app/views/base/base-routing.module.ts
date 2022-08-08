@@ -7,8 +7,6 @@ import { EditfonctionComponent } from './editfonction/editfonction.component';
 import { FonctionsComponent } from './fonctions/fonctions.component';
 import { PowerbiComponent } from './powerbi/powerbi.component';
 import { TablesComponent } from './tables/tables.component';
-import { HistoriqueComponent} from './historique/historique.component'
-import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -39,17 +37,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'historique',
-        component: HistoriqueComponent,
-        data: {
-          title: 'Historique des fonctions'
-        }
-      },
-      {
         path: 'addfonction',
         component: AddfonctionComponent,
         data: {
-          title: 'AJouter une fonction'
+          title: 'Ajouter une fonction'
         }
       },
       {
@@ -64,13 +55,6 @@ const routes: Routes = [
         component: PowerbiComponent,
         data: {
           title: 'Powerbi'
-        }
-      },
-      {
-        path: 'users',
-        component: UsersComponent,
-        data: {
-          title: 'Utilisateurs'
         }
       }
     ]

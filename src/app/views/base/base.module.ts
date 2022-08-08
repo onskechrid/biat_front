@@ -42,8 +42,6 @@ import { BaseRoutingModule } from './base-routing.module';
 import { FonctionsComponent } from './fonctions/fonctions.component';
 import { AddfonctionComponent } from './addfonction/addfonction.component';
 import { EditfonctionComponent } from './editfonction/editfonction.component';
-import { HistoriqueComponent } from './historique/historique.component';
-import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -83,9 +81,7 @@ import { UsersComponent } from './users/users.component';
     TablesComponent,
     FonctionsComponent,
     AddfonctionComponent,
-    EditfonctionComponent,
-    HistoriqueComponent,
-    UsersComponent
+    EditfonctionComponent
   ],
 })
 export class BaseModule {}

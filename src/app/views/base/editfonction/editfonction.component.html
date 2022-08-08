@@ -5,20 +5,13 @@
     <c-col xs="12">
         <c-card class="mb-3" style="margin: 20px;">
             <c-card-header _ngcontent-tjo-c224="" class="card-header" style="background-color: rgb(240,240,240);">
-              <table style="table-layout: fixed; width: 100%;" cTable>
-                <tr>
-                    <td colSpan="12">
-                      <strong _ngcontent-tjo-c224=""> {{fun.name}} </strong>
-                    </td>
-                    <td>
-                      <button _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button" (click)="openPopup()">
-                        <svg _ngcontent-tjo-c219="" cIcon="" name="cil-pen" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-chart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
-                        </svg>
-                    </button>
-                    </td>
-                </tr>
-            </table>
-              
+              <div class="progress-group-header">
+                <h4 style="color: orangered;"> {{fun.name}} </h4>
+                <button _ngcontent-tjo-c219="" cbutton="" class="ms-auto btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button" (click)="openPopup()">
+                  <svg _ngcontent-tjo-c219="" cIcon="" name="cil-pen" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-chart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
+                  </svg>
+                </button>
+              </div>
                 <div
                 class="modal"
                 tabindex="-1"
@@ -38,24 +31,34 @@
             <c-nav variant="tabs">
               <c-nav-item>
                 <a [active]="true" [cTabContent]="tabContent1" routerLink="./" [tabPaneIdx]="0" cNavLink>
-                  <svg cIcon class="me-2" name="cilHome"></svg>
+                  <svg cIcon class="me-2" name="cil-code"></svg>
                   Script
                 </a>
               </c-nav-item>
               <c-nav-item>
                 <a [cTabContent]="tabContent1" routerLink="./" [tabPaneIdx]="1" cNavLink>
-                  <svg cIcon class="me-2" name="cilUser"></svg>
+                  <svg cIcon class="me-2" name="cil-border-all"></svg>
                   Excel
                 </a>
               </c-nav-item>
             </c-nav>
             <c-tab-content #tabContent1="cTabContent" [activeTabPaneIdx]="1" cRounded="bottom">
               <c-tab-pane class="p-3 preview" role="tabpanel">
-                <h4> {{fun.name}} </h4>
-                <form cForm class="d-flex" style="margin-top: 20px;">
-                    <input #qer value="{{fun.query}}" style="border-width: 0px; margin-left: 20px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="SQL script" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-                    <button  (click)="apply('x', qer.value )" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Apply </button>
-                </form>
+                <h4 style="color: orangered;"> {{fun.name}} </h4>
+                <div class="progress-group-header" style="margin-top: 20px; margin-left: 30px; margin-right: 30px;">
+                  <input #qer value="{{fun.query}}" style="margin-right: 3px; border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Script sql de la fonction" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+                    <p *ngIf="visib == true" style="color: red;">Error!</p>
+                    <button  (click)="apply('x', qer.value )" cbutton type="button" class="ms-auto btn" style="width: 70px; margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);">
+                      <svg cIcon name="cil-check"></svg>
+                    </button>
+                </div>
+                <div class="progress-group-header" style="margin-top: 10px; margin-left: 30px; margin-right: 30px;">
+                   <input #qererr value="{{fun.query_error}}" style="margin-right: 3px; border-width: 0px;background-color:  rgb(252, 217, 205); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Script sql d'erreur" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+                   <button  (click)="apply('x', qer.value )" cbutton type="button" class="ms-auto btn" style="width: 70px; margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> 
+                    <svg cIcon name="cil-check"></svg>
+                   </button>
+                </div>
+
                 <c-card style="background-color: rgb(240, 240, 240); margin:15px; border-radius: 20px; border-color: rgb(240, 240, 240); padding: 20px;">
                 <table *ngFor="let res of stringed; let i = index" [bordered]="true" cTable ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped" style="table-layout: fixed; width: 100%; background-color: rgb(250, 248, 248);">
                   <thead *ngIf="i == 0" cTableColor="dark">
@@ -75,14 +78,28 @@
                    </c-card>
               </c-tab-pane>
               <c-tab-pane class="p-3 preview" role="tabpanel">
-
+                <p *ngIf="error == true">Vous avez quelques erreurs dans cette fonction.</p>
+                <p *ngIf="error == false">Aucune erreur détectée.</p>
+                <button *ngIf="error == true" (click)="showExcel()" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Exporter le fichier Excel </button>
+                <table hidden name="excel-table" >
+                      <div *ngFor="let res of stringed1; let i = index" >
+                      <tr *ngIf="i == 0" _ngcontent-tjo-c252="">
+                          <th _ngcontent-tjo-c252="" scope="col">#</th>
+                          <th *ngFor="let h of res" _ngcontent-tjo-c252="" scope="col">{{h}}</th>
+                      </tr>
+                      <tr  *ngIf="i > 0" _ngcontent-tjo-c252="">
+                          <th _ngcontent-tjo-c252="" scope="row">{{i}}</th>
+                          <td *ngFor="let r of res" _ngcontent-tjo-c252="">{{r}}</td>
+                      </tr>
+                      </div>
+              </table>
               </c-tab-pane>
             </c-tab-content>
           </c-card-body>
         </c-card>
     </c-col>
         
-    <button (click)="save(name.value, qer.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
+    <button (click)="save(name.value, qer.value, qererr.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
     ng-reflect-color="" ng-reflect-disabled="false" type="button"
     style="margin-bottom: 20px; margin-left: 900px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
         Modifier

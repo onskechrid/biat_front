@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ClassToggleService, HeaderComponent, INavData } from '@coreui/angular';
@@ -20,13 +21,16 @@ export class DefaultHeaderComponent extends HeaderComponent {
   public navItems = navItems;
 
 
-  constructor(private classToggler: ClassToggleService) {
+  constructor(private http : HttpClient, private classToggler: ClassToggleService) {
     super();
   }
 
   
   
-
+refresh(){
+  let baseApiUrl = "http://localhost:3000/r";
+    this.http.get(baseApiUrl).subscribe(res => {})
+}
 
   
 }

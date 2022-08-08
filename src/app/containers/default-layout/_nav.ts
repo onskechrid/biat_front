@@ -20,16 +20,6 @@ export const navItems: INavData[] = [
     name: 'Fonctions',
     url: '/base/fonctions',
     iconComponent: { name: 'cil-Task' }
-  },
-  {
-    name: 'Historique des fonctions',
-    url: '/base/historique',
-    iconComponent: { name: 'cil-history' }
-  },
-  {
-    name: 'Utilisateurs',
-    url: '/base/users',
-    iconComponent: { name: 'cil-user' }
   }
   
 ];

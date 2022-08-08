@@ -24,6 +24,26 @@ export class FonctionsComponent implements OnInit {
   report: pbi.Embed;
   @ViewChild('reportContainer', { static: false }) reportContainer: ElementRef;
 
+  checkfns(){
+    this.functions.forEach((e) =>{
+      let baseApiUrl = "http://localhost:3000/query/x"
+      this.http.post<any>(baseApiUrl, {query : e.query_error}).subscribe(res => {
+        console.log(res);
+        if((res == null) || (res.length == 0)){
+          e.status = 1;
+        }else{
+          e.status = 0;
+        }
+      })
+    })
+  }
+  del(id : number){
+    console.log(id);
+    
+    let baseApiUrl = "http://localhost:3000/delete-function/" + id
+    this.http.delete<any>(baseApiUrl).subscribe(res => {  
+    })
+  }
   showReport(Token) {
     // Embed URL    
     let embedUrl = environment.powerBI.reportBaseURL;
