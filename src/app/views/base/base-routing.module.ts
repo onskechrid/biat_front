@@ -7,6 +7,7 @@ import { EditfonctionComponent } from './editfonction/editfonction.component';
 import { FonctionsComponent } from './fonctions/fonctions.component';
 import { PowerbiComponent } from './powerbi/powerbi.component';
 import { TablesComponent } from './tables/tables.component';
+import { FilterComponent } from './filter/filter.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,13 @@ const routes: Routes = [
         component: FonctionsComponent,
         data: {
           title: 'Fonctions'
+        }
+      },
+      {
+        path: 'filter',
+        component: FilterComponent,
+        data: {
+          title: 'Filter'
         }
       },
       {

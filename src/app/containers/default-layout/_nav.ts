@@ -20,6 +20,11 @@ export const navItems: INavData[] = [
     name: 'Fonctions',
     url: '/base/fonctions',
     iconComponent: { name: 'cil-Task' }
+  },
+  {
+    name: 'Filtre',
+    url: '/base/filter',
+    iconComponent: { name: 'cil-filter' }
   }
   
 ];

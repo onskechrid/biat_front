@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 export class TablesComponent {
 
   tables : string[];
+  number : number;
   result : string;
   stringed : any[][] = [[]];
   constructor(private http : HttpClient) { }
@@ -18,6 +19,11 @@ export class TablesComponent {
     this.http.get<string[]>(baseApiUrl).subscribe(res => {this.tables = res;})
   }
 
+  nbrwrongfunct(){
+    let baseApiUrl = "http://localhost:3000/nbrwrongFunction"
+    this.http.get<number>(baseApiUrl).subscribe(res => {this.number = res})
+    return this.number;
+  };
   apply(table_name : string, query : string){
     this.stringed = [[]];
     console.log(table_name);

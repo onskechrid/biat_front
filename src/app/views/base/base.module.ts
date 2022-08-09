@@ -42,6 +42,7 @@ import { BaseRoutingModule } from './base-routing.module';
 import { FonctionsComponent } from './fonctions/fonctions.component';
 import { AddfonctionComponent } from './addfonction/addfonction.component';
 import { EditfonctionComponent } from './editfonction/editfonction.component';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { EditfonctionComponent } from './editfonction/editfonction.component';
     TablesComponent,
     FonctionsComponent,
     AddfonctionComponent,
-    EditfonctionComponent
+    EditfonctionComponent,
+    FilterComponent
   ],
 })
 export class BaseModule {}

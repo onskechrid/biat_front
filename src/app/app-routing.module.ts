@@ -30,6 +30,16 @@ const routes: Routes = [
         path: 'tables',
         loadChildren: () =>
           import('./views/base/base.module').then((m) => m.BaseModule)
+      },
+      {
+        path: 'fonctions',
+        loadChildren: () =>
+          import('./views/base/base.module').then((m) => m.BaseModule)
+      },
+      {
+        path: 'filter',
+        loadChildren: () =>
+          import('./views/base/base.module').then((m) => m.BaseModule)
       }
     ]
   },
