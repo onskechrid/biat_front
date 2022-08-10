@@ -1,50 +1,126 @@
 <c-card class="mb-4">
 
-  
     <div class="text-medium-emphasis small progress-group-header" style="margin: 20px;">
         <input style="margin-left: 3px; border-width: 0px; margin-right: 3px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 225px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="ID Customer" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
         <input style="margin-left: 3px; border-width: 0px; margin-right: 3px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 225px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="ID_BCT" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
         <input style="margin-left: 3px; border-width: 0px; margin-right: 3px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 225px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="COMP" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
         <input style="margin-left: 3px; border-width: 0px; margin-right: 3px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 225px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="REF_CRDT" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
 
-        <button cbutton class="btn ms-auto" style="width: 70px; border-radius:20px; border-color: orangered; background-color: orangered;"> 
+        <button cbutton class="btn ms-auto" style="width: 70px; border-radius:20px; border-color: #3c4b64; background-color: #3c4b64;"> 
         <svg cIcon name="cil-check" style="color: white;"></svg>
         </button>
     </div>
     
     <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">   
-        <c-card>
-            <c-nav variant="tabs" style="width: 100%;">
-                <c-nav-item style="width: 50%;">
-                <a [active]="true" [cTabContent]="tabContent1" routerLink="./" [tabPaneIdx]="0" cNavLink style="text-align: center;">
-                    <svg cIcon class="me-2" name="cilViewModule"></svg>
-                    Resultat
-                </a>
-                </c-nav-item>
-                <c-nav-item style="width: 50%;">
-                <a [cTabContent]="tabContent1" routerLink="./" [tabPaneIdx]="1" cNavLink style="text-align: center; color: orangered;">
-                    <svg cIcon class="me-2" name="cil-code"></svg>
-                    Script
-                </a>
-                </c-nav-item>
-            </c-nav>
-            <c-tab-content #tabContent1="cTabContent" [activeTabPaneIdx]="1" cRounded="bottom">
-                <c-tab-pane class="p-3 preview" role="tabpanel">
-                    <c-card class="card" style="background-color: rgb(243, 242, 242); border-width: 0px; border-radius: 20px; ">   
-                        ....
-                    </c-card>
-                </c-tab-pane>
-                <c-tab-pane class="p-3 preview" role="tabpanel">
-                    <c-card class="card" style="background-color: rgb(243, 242, 242); border-width: 0px; border-radius: 20px; ">   
-                        <input style="margin: 5px; border-width: 0px; background-color:  rgb(252, 217, 205); border-radius: 20px;" aria-label="input example" cformcontrol="" placeholder="Requête d'affichage sur excel" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-                    </c-card>
-                </c-tab-pane>
-            </c-tab-content>
-        </c-card>
+        <c-row style="margin-bottom: 5px;">
+            <c-col class="d-none d-md-block" sm="12">
+              <button cButton class="float-end" style="background-color: orangered; border-color: orangered; border-radius: 20px;" (click)="openPopup()">
+                <svg cIcon name="cil-code"></svg>
+              </button>
+            </c-col>
+        </c-row>
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+            <div class="modal-dialog" role="document" >
+                <div class="modal-content" style="width: 800px; background-color: rgb(230, 230, 230);">
+                    <div class="fs-5 fw-semibold progress-group-header" style="width: 100%;">
+                        <textarea #newName cformcontrol="" id="floatingTextarea2" placeholder="Script" ng-reflect-ng-style="[object Object]" type="text" class="form-control" style="height: 100px; margin: 20px;"></textarea>                        
+                    </div>
+                    <div class="text-medium-emphasis small progress-group-header">
+                        <button (click)="closePopup()" cbutton class="ms-auto btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button"  style="border-radius: 20px; margin-right: 20px; margin-bottom: 10px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
+                            <svg cIcon name="cil-check" style="color: white;"></svg>
+                        </button>
+                    </div>    
+                </div>
+            </div>
+        </div>
+          
+        <table cTable caption="top">
+            <caption>Le client identifié par 'huni thot el id customer'</caption>
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Class</th>
+              <th scope="col">Heading</th>
+              <th scope="col">Heading</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+            </tbody>
+          </table>
     </c-card-body>
+    
     <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">   
-        houni bech tetaficha el resultat ta3 requete ta3 l'encours
+        <c-row style="margin-bottom: 5px;">
+            <c-col class="d-none d-md-block" sm="12">
+              <button cButton class="float-end" style="border-radius: 20px; background-color: orangered; border-color: orangered;" (click)="openPopup()">
+                <svg cIcon name="cil-code"></svg>
+              </button>
+            </c-col>
+        </c-row>
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+            <div class="modal-dialog" role="document" >
+                <div class="modal-content" style="width: 800px; background-color: rgb(230, 230, 230);">
+                    <div class="fs-5 fw-semibold progress-group-header" style="width: 100%;">
+                        <textarea #newName cformcontrol="" id="floatingTextarea2" placeholder="Script" ng-reflect-ng-style="[object Object]" type="text" class="form-control" style="height: 100px; margin: 20px;"></textarea>                        
+                    </div>
+                    <div class="text-medium-emphasis small progress-group-header">
+                        <button (click)="closePopup()" cbutton class="ms-auto btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button"  style="border-radius: 20px; margin-right: 20px; margin-bottom: 10px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
+                            <svg cIcon name="cil-check" style="color: white;"></svg>
+                        </button>
+                    </div>    
+                </div>
+            </div>
+        </div>
+          
+        <table cTable caption="top">
+            <caption>Les encours du client identifié par 'id customer'</caption>
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Class</th>
+              <th scope="col">Heading</th>
+              <th scope="col">Heading</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
     </c-card-body>
-  
-  
-  </c-card>
+
+</c-card>

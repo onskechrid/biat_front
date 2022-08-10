@@ -1,16 +1,16 @@
 <c-card class="mb-4">
   <div _ngcontent-tjo-c219="" class="d-grid gap-2 d-md-block">
       <form cForm class="d-flex" style="margin-top: 20px;">      
-        <button _ngcontent-tjo-c219="" (click)="openPopup()" cbutton="" variant="ghost" class="me-1 btn btn-sm" ng-reflect-variant="ghost" ng-reflect-active="false"
-        ng-reflect-color="" ng-reflect-disabled="false" type="button" style="width: 100px; border-radius: 20px; margin-left: 830px; background-color: #3c4b64; border-color: #3c4b64; color: white;" >
-          Importer
+        <button _ngcontent-tjo-c219="" (click)="openPopup()" cbutton="" variant="ghost" class="ms-auto btn btn-sm" ng-reflect-variant="ghost" ng-reflect-active="false"
+        ng-reflect-color="" ng-reflect-disabled="false" type="button" style="width: 70px; border-radius: 20px; margin-left: 830px; background-color: #3c4b64; border-color: #3c4b64; color: white;" >
+         <svg cIcon name="cil-cloud-download"></svg>
         </button>
 
         <c-dropdown variant="btn-group">
-          <button _ngcontent-tjo-c219="" (click)="readAsCSV()" cButton class="me-1 btn btn-sm"
+          <button _ngcontent-tjo-c219="" (click)="readAsCSV()" cButton class="btn btn-sm"
           ng-reflect-active="false" ng-reflect-color="primary" ng-reflect-disabled="false" 
-          type="button" style="width: 100px; border-radius: 20px; background-color: #3c4b64; border-color: #3c4b64; color: white;">
-            Exporter
+          type="button" style="margin-right: 20px; margin-left: 5px; width: 70px; border-radius: 20px; background-color: #3c4b64; border-color: #3c4b64; color: white;">
+          <svg cIcon name="cil-cloud-upload"></svg>
           </button>
         </c-dropdown>
       </form>  
@@ -22,10 +22,10 @@
                 </c-input-group>  
                 <input style="margin-left: 20px; width:550px;" (keyup)="getChange($event)" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="database name" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
                 <button _ngcontent-rih-c214="" (click)="closePopup()" cbutton="" color="secondary" 
-                style="margin-left:450px; margin-top: 20px; max-width: 100px; background-color: #3c4b64; border-color: #3c4b64; color: white;" 
+                style="margin-left:450px; margin-top: 20px; max-width: 70px; background-color: #3c4b64; border-color: #3c4b64; color: white;" 
                 id="inputGroupFileAddon04" type="button" variant="outline" ng-reflect-color="" 
                 ng-reflect-type="button" ng-reflect-variant="" class="btn" routerLink="../database" (click)="upload()"> 
-                    import 
+                <svg cIcon name="cil-cloud-download"></svg> 
                 </button>
             </div>
         </div>

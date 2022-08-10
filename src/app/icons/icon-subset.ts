@@ -11,6 +11,7 @@ import {
   cibLinkedin,
   cibSkype,
   cibTwitter,
+  cilCloudUpload,
   cilFilter,
   cibAddthis,
   cilSearch,
@@ -190,12 +191,14 @@ export const iconSubset = {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  cilCloudUpload,
   cilBorderAll,
   cilHistory
 };
 
 export enum IconSubset {
   cibCcAmex = 'cibCcAmex',
+  cilCloudUpload ='cilCloudUpload',
   cibCcApplePay = 'cibCcApplePay',
   cibCcMastercard = 'cibCcMastercard',
   cibCcPaypal = 'cibCcPaypal',
