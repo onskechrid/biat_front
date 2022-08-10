@@ -20,6 +20,7 @@ export class FonctionsComponent implements OnInit {
   ngOnInit(): void {
     let baseApiUrl = "http://localhost:3000/show-function"
     this.http.get<Function[]>(baseApiUrl).subscribe(res => {this.functions = res;})
+    this.checkfns()
   }
   report: pbi.Embed;
   @ViewChild('reportContainer', { static: false }) reportContainer: ElementRef;
@@ -27,15 +28,33 @@ export class FonctionsComponent implements OnInit {
   checkfns(){
     this.functions.forEach((e) =>{
       let baseApiUrl = "http://localhost:3000/query/x"
+      let valid_q_e = 0;
       this.http.post<any>(baseApiUrl, {query : e.query_error}).subscribe(res => {
         console.log(res);
-        if((res == null) || (res.length == 0)){
-          e.status = 1;
+        valid_q_e = 0;
+        if(res.length == 0){
+          valid_q_e = 1;
         }else{
-          e.status = 0;
+          valid_q_e = 0;
         }
+        
+        this.http.post<any>(baseApiUrl, {query : e.query}).subscribe(res => {
+          console.log(res);
+          if((valid_q_e == 1) && (res.length == 0)){
+            e.status = 1;
+            this.updateStatus(e.id, 1)
+          }else{
+            e.status = 0;
+            this.updateStatus(e.id, 0)
+          }
+        })
       })
     })
+  }
+  updateStatus(id : number, update : number){
+    let baseApiUrl = "http://localhost:3000/update-fn-status/"+id+"/" + update
+    this.http.get(baseApiUrl).subscribe(res => {
+    });
   }
   del(id : number){
     console.log(id);

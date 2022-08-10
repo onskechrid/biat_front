@@ -54,7 +54,7 @@
                 </div>
                 <div class="progress-group-header" style="margin-top: 10px; margin-left: 30px; margin-right: 30px;">
                    <input #qererr value="{{fun.query_error}}" style="margin-right: 3px; border-width: 0px;background-color:  rgb(252, 217, 205); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Requête d'affichage sur excel" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-                   <button  (click)="apply('x', qer.value )" cbutton type="button" class="ms-auto btn" style="width: 70px; margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> 
+                   <button  (click)="apply('x', qererr.value )" cbutton type="button" class="ms-auto btn" style="width: 70px; margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> 
                     <svg cIcon name="cil-check"></svg>
                    </button>
                 </div>
@@ -78,9 +78,9 @@
                    </c-card>
               </c-tab-pane>
               <c-tab-pane class="p-3 preview" role="tabpanel">
-                <p *ngIf="error == true">Vous avez quelques erreurs dans cette fonction.</p>
-                <p *ngIf="error == false">Aucune erreur détectée.</p>
-                <button *ngIf="error == true" (click)="showExcel()" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Exporter le fichier Excel </button>
+                <!--<p *ngIf="error == true">Vous avez quelques erreurs dans cette fonction.</p>
+                <p *ngIf="error == false">Aucune erreur détectée.</p>-->
+                <button (click)="showExcel()" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" class="btn" style="margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> Exporter le fichier Excel </button>
                 <table hidden name="excel-table" >
                       <div *ngFor="let res of stringed1; let i = index" >
                       <tr *ngIf="i == 0" _ngcontent-tjo-c252="">

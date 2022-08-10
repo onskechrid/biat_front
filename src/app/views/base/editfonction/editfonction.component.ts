@@ -31,8 +31,13 @@ export class EditfonctionComponent implements OnInit {
     let baseApiUrl = "http://localhost:3000/get-function/" + this.route.snapshot.paramMap.get('id')
     this.http.get<Function>(baseApiUrl).subscribe(res => {
       this.fun = res;
+      console.log(this.fun);
+      if(this.fun.query_error == "undefined"){
+        this.executeErrorQuery(this.fun.query);   
+      }else{
+        this.executeErrorQuery(this.fun.query_error);   
+      }
       this.apply('x', this.fun.query) 
-      this.executeErrorQuery(this.fun.query_error);   
     })
   }
 
@@ -99,10 +104,12 @@ export class EditfonctionComponent implements OnInit {
     let baseApiUrl = "http://localhost:3000/query/"+table_name
     this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
       console.log(res);
-      if(res == null){
+      if((res == null) || (res.length == 0)){
         this.visib = true;
+        this.updateStatus(this.fun.id, 1);
         return;
       }
+      this.updateStatus(this.fun.id, 0);
       this.visib = false;
       //let obj = JSON.parse(res);
       this.result = res;
