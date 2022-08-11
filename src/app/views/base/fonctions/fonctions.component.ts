@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import * as pbi from 'powerbi-client';
 import { environment } from 'src/environments/environment';
 import { Function } from './function.model';
@@ -13,14 +14,16 @@ import { Function } from './function.model';
 
 export class FonctionsComponent implements OnInit {
 
-  constructor(private http : HttpClient) { }
+  constructor(private router : Router, private http : HttpClient) { }
 
   functions : Function[] = [];
   
   ngOnInit(): void {
     let baseApiUrl = "http://localhost:3000/show-function"
-    this.http.get<Function[]>(baseApiUrl).subscribe(res => {this.functions = res;})
-    this.checkfns()
+    this.http.get<Function[]>(baseApiUrl).subscribe(res => {
+      this.functions = res;
+      this.checkfns()
+    })
   }
   report: pbi.Embed;
   @ViewChild('reportContainer', { static: false }) reportContainer: ElementRef;
@@ -28,26 +31,15 @@ export class FonctionsComponent implements OnInit {
   checkfns(){
     this.functions.forEach((e) =>{
       let baseApiUrl = "http://localhost:3000/query/x"
-      let valid_q_e = 0;
-      this.http.post<any>(baseApiUrl, {query : e.query_error}).subscribe(res => {
+      this.http.post<any>(baseApiUrl, {query : e.query}).subscribe(res => {
         console.log(res);
-        valid_q_e = 0;
         if(res.length == 0){
-          valid_q_e = 1;
+          this.updateStatus(e.id, 1);
+          e.status = 1
         }else{
-          valid_q_e = 0;
+          this.updateStatus(e.id, 0);
+          e.status = 0;
         }
-        
-        this.http.post<any>(baseApiUrl, {query : e.query}).subscribe(res => {
-          console.log(res);
-          if((valid_q_e == 1) && (res.length == 0)){
-            e.status = 1;
-            this.updateStatus(e.id, 1)
-          }else{
-            e.status = 0;
-            this.updateStatus(e.id, 0)
-          }
-        })
       })
     })
   }
@@ -62,6 +54,7 @@ export class FonctionsComponent implements OnInit {
     let baseApiUrl = "http://localhost:3000/delete-function/" + id
     this.http.delete<any>(baseApiUrl).subscribe(res => {  
     })
+    window.location.reload();
   }
   showReport(Token) {
     // Embed URL    

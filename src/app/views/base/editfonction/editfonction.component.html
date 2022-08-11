@@ -99,7 +99,7 @@
         </c-card>
     </c-col>
         
-    <button (click)="save(name.value, qer.value, qererr.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
+    <button [disabled]="enabled == false" (click)="save(name.value, qer.value, qererr.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
     ng-reflect-color="" ng-reflect-disabled="false" type="button"
     style="margin-bottom: 20px; margin-left: 900px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
         Modifier

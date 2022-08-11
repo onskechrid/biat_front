@@ -2,7 +2,7 @@ import { query } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppModule } from 'src/app/app.module';
 import { Function } from '../fonctions/function.model';
 import * as XLSX from 'xlsx'; 
@@ -15,11 +15,12 @@ import * as XLSX from 'xlsx';
 })
 export class EditfonctionComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http : HttpClient) { }
+  constructor(private router : Router, private route: ActivatedRoute, private http : HttpClient) { }
   result : string;
   result1 : string;
   stringed : any[][] = [[]];
   stringed1 : any[][] = [[]];
+  enabled : boolean = false; 
 
   function_name : string = "Function name";
   fun : Function;
@@ -27,17 +28,18 @@ export class EditfonctionComponent implements OnInit {
   error : boolean = false;
 
   ngOnInit(): void {
+    this.enabled = false;
     console.log( this.route.snapshot.paramMap.get('id'));
     let baseApiUrl = "http://localhost:3000/get-function/" + this.route.snapshot.paramMap.get('id')
     this.http.get<Function>(baseApiUrl).subscribe(res => {
       this.fun = res;
       console.log(this.fun);
-      if(this.fun.query_error == "undefined"){
-        this.executeErrorQuery(this.fun.query);   
-      }else{
+      if((this.fun.query_error != "undefined") && (this.fun.query_error != "")){
         this.executeErrorQuery(this.fun.query_error);   
+      }else{
+        this.executeErrorQuery(this.fun.query);  
       }
-      this.apply('x', this.fun.query) 
+      this.apply('x', this.fun.query)  
     })
   }
 
@@ -60,11 +62,9 @@ export class EditfonctionComponent implements OnInit {
     this.http.post<any>(baseApiUrl, {query : err_quey}).subscribe(res => {
       if((res == null) || (res.length == 0)){
         this.error = false;
-        this.updateStatus(this.fun.id, 1);
         return;
       }else{
         this.error = true;
-        this.updateStatus(this.fun.id, 0);
         //let obj = JSON.parse(res);
         this.result1 = res;
         Object.keys(res[0]).forEach(e => {
@@ -104,13 +104,18 @@ export class EditfonctionComponent implements OnInit {
     let baseApiUrl = "http://localhost:3000/query/"+table_name
     this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
       console.log(res);
-      if((res == null) || (res.length == 0)){
+      if(res == null){
         this.visib = true;
+        this.enabled = false;
+      }
+      if(res.length == 0){
         this.updateStatus(this.fun.id, 1);
+        this.enabled = true;
         return;
       }
       this.updateStatus(this.fun.id, 0);
       this.visib = false;
+      this.enabled = false;;
       //let obj = JSON.parse(res);
       this.result = res;
       Object.keys(res[0]).forEach(e => {
@@ -138,5 +143,6 @@ export class EditfonctionComponent implements OnInit {
     this.http.post<any>(baseApiUrl, {id: this.route.snapshot.paramMap.get('id'), query : query, status : 1, name : name, query_error : error}).subscribe(res => {
       console.log(res);
     })
+    this.router.navigate(['base/fonctions'])
   }
 }

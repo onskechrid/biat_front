@@ -12,7 +12,11 @@ export class AddfonctionComponent implements OnInit {
   result : string;
   stringed : any[][] = [[]];
   function_name : string = "Function name";
+  visib : boolean = false;
+  enabled : boolean = false;
+
   ngOnInit(): void {
+    this.enabled = false;
   }
 
   displayStyle = "none";
@@ -31,6 +35,17 @@ export class AddfonctionComponent implements OnInit {
     
     let baseApiUrl = "http://localhost:3000/query/"+table_name
     this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
+      if(res == null){
+        this.visib = true;
+        this.enabled = false;
+      }else{
+        this.visib = false;
+      }
+      if(res.length == 0){
+        this.enabled = true;
+      }else{
+        this.enabled = false;
+      }
       console.log(res);
       //let obj = JSON.parse(res);
       this.result = res;
