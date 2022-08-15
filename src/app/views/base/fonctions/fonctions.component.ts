@@ -22,7 +22,8 @@ export class FonctionsComponent implements OnInit {
     let baseApiUrl = "http://localhost:3000/show-function"
     this.http.get<Function[]>(baseApiUrl).subscribe(res => {
       this.functions = res;
-      this.checkfns()
+      this.checkfns();
+      //window.location.reload();
     })
   }
   report: pbi.Embed;

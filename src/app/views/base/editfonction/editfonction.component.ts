@@ -34,7 +34,7 @@ export class EditfonctionComponent implements OnInit {
     this.http.get<Function>(baseApiUrl).subscribe(res => {
       this.fun = res;
       console.log(this.fun);
-      if((this.fun.query_error != "undefined") && (this.fun.query_error != "")){
+      if((this.fun.query_error != "Indéfinie") && (this.fun.query_error != "")){
         this.executeErrorQuery(this.fun.query_error);   
       }else{
         this.executeErrorQuery(this.fun.query);  

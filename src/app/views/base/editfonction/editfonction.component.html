@@ -19,7 +19,7 @@
                 [ngStyle]="{'display':displayStyle}">
                 <div class="modal-dialog" role="document" >
                     <div class="modal-content" style="background-color: rgb(230, 230, 230);">
-                        <textarea #newName _ngcontent-tjo-c222="" cformcontrol="" id="floatingTextarea2" placeholder="Leave a comment here" ng-reflect-ng-style="[object Object]" type="text" class="form-control" style="height: 100px; margin: 20px; max-width: 460px;"></textarea>                        
+                        <textarea #newName _ngcontent-tjo-c222="" cformcontrol="" id="floatingTextarea2" placeholder="Nom de la fonction" ng-reflect-ng-style="[object Object]" type="text" class="form-control" style="height: 100px; margin: 20px; max-width: 460px;"></textarea>                        
                         <button (click)="closePopup(newName.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button"  style=" margin-bottom: 20px; max-width: 120px; margin-left: 350px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
                         Modifier
                         </button>    
@@ -53,14 +53,14 @@
                     </button>
                 </div>
                 <div class="progress-group-header" style="margin-top: 10px; margin-left: 30px; margin-right: 30px;">
-                   <input #qererr value="{{fun.query_error}}" style="margin-right: 3px; border-width: 0px;background-color:  rgb(252, 217, 205); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Requête d'affichage sur excel" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+                   <input #qererr value="{{fun.query_error}}" style="margin-right: 3px; border-width: 0px;background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Requête d'affichage sur excel" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
                    <button  (click)="apply('x', qererr.value )" cbutton type="button" class="ms-auto btn" style="width: 70px; margin-left: 10px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> 
                     <svg cIcon name="cil-check"></svg>
                    </button>
                 </div>
 
                 <c-card style="background-color: rgb(240, 240, 240); margin:15px; border-radius: 20px; border-color: rgb(240, 240, 240); padding: 20px;">
-                <table *ngFor="let res of stringed; let i = index" [bordered]="true" cTable ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped" style="table-layout: fixed; width: 100%; background-color: rgb(250, 248, 248);">
+                <!--<table *ngFor="let res of stringed; let i = index" [bordered]="true" cTable ng-reflect-hover="true" ng-reflect-striped="true" class="table table-hover table-striped" style="table-layout: fixed; width: 100%; background-color: rgb(250, 248, 248);">
                   <thead *ngIf="i == 0" cTableColor="dark">
                       <tr _ngcontent-tjo-c252="">
                           <th _ngcontent-tjo-c252="" scope="col">#</th>
@@ -74,8 +74,20 @@
                       </tr>
                       
                   </tbody>
-              </table>
-                   </c-card>
+                  </table>-->
+                <div style="overflow:auto;">
+                  <table *ngFor="let res of stringed; let i = index" style="border-radius: 20px; table-layout: fixed; width:1000px;" >
+                    <tr *ngIf="i == 0">
+                      <td style="background-color: orangered; color: white; width: 50px; font-weight: bold; text-align: center;">#</td>
+                      <td *ngFor="let h of res" style="height: 30px; background-color: orangered; color: white; font-weight: bold; width: 250px; text-align: center;">{{h}}</td>
+                    </tr>
+                    <tr *ngIf="i > 0">
+                      <td style="font-weight: bold; width: 50px; text-align: center; color: orangered;">{{i}}</td>
+                      <td *ngFor="let r of res" style="width: 250px; padding-left: 10px;">{{r}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </c-card>
               </c-tab-pane>
               <c-tab-pane class="p-3 preview" role="tabpanel">
                 <!--<p *ngIf="error == true">Vous avez quelques erreurs dans cette fonction.</p>

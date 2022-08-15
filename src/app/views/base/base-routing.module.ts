@@ -41,7 +41,7 @@ const routes: Routes = [
         path: 'filter',
         component: FilterComponent,
         data: {
-          title: 'Filter'
+          title: 'Filtre'
         }
       },
       {
