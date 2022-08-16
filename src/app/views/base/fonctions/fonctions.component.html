@@ -1,11 +1,11 @@
 <c-card class="mb-4">
   <div class="progress-group-header" style="margin-top: 20px; margin-left: 30px; margin-right: 30px;">
-    <input aria-label="Search" cFormControl placeholder="Recherche" type="search" style="max-width: 700px; border-radius: 20px;">
-    <button cButton color="success" type="submit" variant="outline" class="rounded-pill" style="background-color: rgb(181, 181, 181); border-color: rgb(181, 181, 181); margin-left: 3px;">
+    <input #sr aria-label="Search" cFormControl placeholder="Recherche" type="search" style="max-width: 700px; border-radius: 20px;">
+    <button (click)="search(sr.value)" cButton color="success" type="submit" variant="outline" class="rounded-pill" style="background-color: rgb(181, 181, 181); border-color: rgb(181, 181, 181); margin-left: 3px;">
       <svg cIcon name="cil-search" style="color: white;"></svg>
     </button>
     <label class="ms-auto switch-wrap">
-      <input type="checkbox" />
+      <input (change)="checkValue($event)" [checked]="switch == true" type="checkbox" />
       <div class="switch"></div>
     </label>
     <button cbutton class="ms-auto btn btn-primary rounded-pill ng-star-inserted" type="button" 

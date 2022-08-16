@@ -16,15 +16,20 @@ export class FonctionsComponent implements OnInit {
 
   constructor(private router : Router, private http : HttpClient) { }
 
+  switch : boolean = false;
   functions : Function[] = [];
   
   ngOnInit(): void {
+    this.switch = false;
     let baseApiUrl = "http://localhost:3000/show-function"
     this.http.get<Function[]>(baseApiUrl).subscribe(res => {
       this.functions = res;
       this.checkfns();
       //window.location.reload();
     })
+  }
+  ngAfterContentInit() : void{
+    this.checkfns();
   }
   report: pbi.Embed;
   @ViewChild('reportContainer', { static: false }) reportContainer: ElementRef;
@@ -44,10 +49,55 @@ export class FonctionsComponent implements OnInit {
       })
     })
   }
+  checkValue(event : any){
+    if(event.target.checked == true){
+      let baseApiUrl = "http://localhost:3000/show-function"
+      this.http.get<Function[]>(baseApiUrl).subscribe(res => {
+        let k : Function[] = [];
+        res.forEach((e) => {
+          if(e.status == 0){          
+            k.push(e)
+          }
+        })
+        console.log(k);
+        this.functions = k;
+        this.checkfns();
+        //window.location.reload();
+      })
+    }else{
+      let baseApiUrl = "http://localhost:3000/show-function"
+      this.http.get<Function[]>(baseApiUrl).subscribe(res => {
+        this.functions = res;
+        this.checkfns();
+        //window.location.reload();
+      })
+    }
+  }
   updateStatus(id : number, update : number){
     let baseApiUrl = "http://localhost:3000/update-fn-status/"+id+"/" + update
     this.http.get(baseApiUrl).subscribe(res => {
     });
+  }
+  search(text : string){
+    console.log(text);
+    
+    let baseApiUrl = "http://localhost:3000/show-function"
+    this.http.get<Function[]>(baseApiUrl).subscribe(res => {
+      let k : Function[] = [];
+      res.forEach((e) => {
+        if(e.name == text){          
+          k.push(e)
+        }
+      })
+      console.log(k);
+      if(k.length != 0){
+        this.functions = k;
+      }else{
+        this.functions = res;
+      }
+      this.checkfns();
+      //window.location.reload();
+    })
   }
   del(id : number){
     console.log(id);
