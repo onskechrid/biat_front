@@ -32,7 +32,7 @@ export class TablesComponent {
     this.main_container = false;
     this.tables.forEach((e) => {
     let baseApiUrl = "http://localhost:3000/query/x"
-    let u = "select * from " + e + ";";
+    let u = 'select * from public."' + e + '";'
     this.http.post<any>(baseApiUrl, {query : u}).subscribe(res => {
       console.log(res);
       //let obj = JSON.parse(res);
