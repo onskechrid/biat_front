@@ -26,7 +26,7 @@
         <table style="width: 100%;">
           <tr>
             <td style="width: 99%;">
-              <strong _ngcontent-tjo-c224="" style="text-transform: uppercase;"> {{table}} </strong>
+              <strong _ngcontent-tjo-c224="" style="text-transform: uppercase;"> {{table.name}} </strong>
             </td>
             <td>
               <button _ngcontent-tjo-c219="" cbutton class="rounded-pill btn btn-warning" ng-reflect-active="false" ng-reflect-disabled="false" type="button">
@@ -54,7 +54,7 @@
              </tr>
           </tbody>
        </table>-->
-       <table *ngFor="let res of qres[n]; let i = index" style="border-radius: 20px; table-layout: fixed; width:1000px;" >
+       <table *ngFor="let res of table.data; let i = index" style="border-radius: 20px; table-layout: fixed; width:1000px;" >
         <tr *ngIf="i == 0">
           <td style="background-color: orangered; color: white; width: 50px; font-weight: bold; text-align: center;">#</td>
           <td *ngFor="let h of res" style="height: 30px; background-color: orangered; color: white; font-weight: bold; width: 250px; text-align: center;">{{h}}</td>

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class TablesComponent {
 
-  tables : string[];
+  tables : {name: string, data: any[][] }[] = [];
   number : number;
   result : string;
   stringed : any[][] = [[]];
@@ -22,21 +22,30 @@ export class TablesComponent {
     this.qres = [];
     let baseApiUrl = "http://localhost:3000/get-tables"
     this.http.get<string[]>(baseApiUrl).subscribe(res => {
-      this.tables = res;
+      res.forEach((e) => {
+       this.getDataForEachTable(e)
+      })
       this.nbrwrongfunct()
-      this.getDataForEachTable()
     })
   }
 
-  getDataForEachTable(){
+  getDataForEachTable(e) : any{
+    console.log(e)
     this.main_container = false;
-    this.tables.forEach((e) => {
     let baseApiUrl = "http://localhost:3000/query/x"
-    let u = 'select * from public."' + e + '";'
+    let u = 'select * from "' + e + '";'
+    let yy =e;
+    console.log(u)
     this.http.post<any>(baseApiUrl, {query : u}).subscribe(res => {
-      console.log(res);
       //let obj = JSON.parse(res);
-      this.result = res;
+      if(res.length == 0){
+        let o : any = {
+          name : yy,
+          data : [[]]
+        }
+        this.tables.push(o);
+      }else{
+      console.log("wewewee")
       let stringed = [[]]
       Object.keys(res[0]).forEach(e => {
         stringed[0].push(e);
@@ -52,8 +61,13 @@ export class TablesComponent {
         stringed.push([]);
       })
       stringed.pop();
-      this.qres.push(stringed)
-    })
+      //this.qres.push(stringed)
+      let o : any = {
+        name : yy,
+        data : stringed
+      }
+      this.tables.push(o);
+    }
     })
   }
   changed(event : any){
@@ -64,7 +78,6 @@ export class TablesComponent {
   nbrwrongfunct(){
     let baseApiUrl = "http://localhost:3000/nbrwrongFunction"
     this.http.get<number>(baseApiUrl).subscribe(res => {
-      console.log(this.number);
       
        this.number = res[0].n})
   };
