@@ -11,7 +11,7 @@ export class AddfonctionComponent implements OnInit {
   constructor(private http : HttpClient) { }
   result : string;
   stringed : any[][] = [[]];
-  function_name : string = "Function name";
+  function_name : string = "Nom de la fonction";
   visib : boolean = false;
   enabled : boolean = false;
 
@@ -19,7 +19,7 @@ export class AddfonctionComponent implements OnInit {
     this.enabled = false;
   }
 
-  displayStyle = "none";
+  /*displayStyle = "none";
   
   openPopup() {
     this.displayStyle = "block";
@@ -27,7 +27,7 @@ export class AddfonctionComponent implements OnInit {
   closePopup(f : string) {
     this.displayStyle = "none";
     this.function_name = f;
-  }
+  }*/
   apply(table_name : string, query : string){
     this.stringed = [[]];
     console.log(table_name);

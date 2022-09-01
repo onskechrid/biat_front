@@ -2,15 +2,18 @@
 
     <c-card _ngcontent-tjo-c224="" class="mb-4 card" style="margin: 10px;">
         <c-card-header _ngcontent-tjo-c224="" class="card-header" style="background-color: rgb(240,240,240);">
-            <div class="progress-group-header">
+            <!--<div class="progress-group-header">
                 <h5 style="color: orangered;"> {{function_name}} </h5>
-                <input #name value="{{function_name}}" type="hidden"/>
+                <input #name value="{{function_name}}" type="hidden" style="white-space: pre;"/>
                 <button _ngcontent-tjo-c219="" cbutton class="ms-auto btn btn-light" ng-reflect-active="false" ng-reflect-color="" ng-reflect-disabled="false" type="button" (click)="openPopup()">
-                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-pen" class="me-2 icon" ng-reflect-content="" ng-reflect-name="cil-chart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
+                    <svg cIcon="" name="cil-pen">
                     </svg>
                 </button>
+            </div>-->
+            <div class="progress-group-header" style="margin-left: 10px; margin-right: 10px;">
+                <input #name value="{{function_name}}" style="font-weight: bold; color:  orangered; border-width: 0px; margin-right: 3px; background-color:  rgb(240, 240, 240); border-radius: 20px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Requête de la fonction" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
             </div>
-            <div
+            <!--<div
                 class="modal"
                 tabindex="-1"
                 role="dialog"
@@ -24,7 +27,7 @@
                         </button>    
                     </div>
                 </div>
-            </div>
+            </div>-->
         </c-card-header>
 
         <div class="progress-group-header" style="margin-top: 20px; margin-left: 30px; margin-right: 30px;">

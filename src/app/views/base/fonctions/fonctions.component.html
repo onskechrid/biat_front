@@ -19,48 +19,43 @@
       <c-card-body>
         <div  *ngFor="let fun of functions">
           <div *ngIf="fun.status == 1" style="background-color:#d9fce4;" class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
-             <div class="fs-5 fw-semibold progress-group-header">
+             <!--<div class="fs-5 fw-semibold progress-group-header">
                 <span style="color: #3c4b64;"> {{fun.name}} </span>
-             </div>
+             </div>-->
              <div class="text-medium-emphasis small progress-group-header">
-                <button cButton style="background-color: rgb(249,177,21); color:#3c4b64; border-color:rgb(249,177,21);" class="ms-auto rounded-pill position-relative mx-2" >
-                   <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
-                   </svg>
+                <h6 style="margin-top: 10px; color: #3c4b64; width: 700px;"> {{fun.name}} </h6>
+                <button cButton style="margin-top: 10px; background-color: rgb(249,177,21); color:#3c4b64; border-color:rgb(249,177,21);" class="ms-auto rounded-pill position-relative mx-2" >
+                   <svg cIcon="" name="cil-chart" class="icon"></svg>
                    <section id="report">
                       <div style="width: 100%; height: 100%" #reportContainer></div>
                    </section>
                 </button>
-                <button cButton style="background-color:rgb(181, 181, 181); border-color:rgb(181,181,181); color:#3c4b64;" type="button" class="rounded-pill position-relative mx-2" routerLink="../editfonction/{{fun.id}}">
-                   <svg _ngcontent-tjo-c219="" cIcon="" name="cil-task" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: #3c4b64;">
-                   </svg>
+                <button cButton style="margin-top: 10px; background-color:rgb(181, 181, 181); border-color:rgb(181,181,181); color:#3c4b64;" type="button" class="rounded-pill position-relative mx-2" routerLink="../editfonction/{{fun.id}}">
+                   <svg cIcon="" name="cil-task" ></svg>
                 </button>
-                <button  cButton style="border-color: rgb(229, 83, 83); background-color: rgb(229, 83, 83);" type="button" class="rounded-pill position-relative mx-2" (click)="del(fun.id)">
-                   <svg _ngcontent-tjo-c219="" cIcon="" name="cil-trash" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: white;">
-                     
-                   </svg>
+                <button  cButton style="margin-top: 10px; border-color: orangered; background-color: orangered;" type="button" class="rounded-pill position-relative mx-2" (click)="del(fun.id)">
+                   <svg cIcon="" name="cil-trash"></svg>
                 </button>
              </div>
           </div>
-          <div *ngIf="fun.status == 0" style="background-color:#fce0e0;" class="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-             <div class="fs-5 fw-semibold progress-group-header">
-                <span> {{fun.name}} </span>
-             </div>
+          <div *ngIf="fun.status == 0" style="background-color:rgb(248, 239, 236);" class="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
              <div class="text-medium-emphasis small progress-group-header">
-                <button cButton style="background-color: rgb(249,177,21); color:#3c4b64; border-color:rgb(249,177,21);" class="ms-auto rounded-pill position-relative mx-2" >
+                <h6 style="margin-top: 10px; color: #3c4b64; width: 700px;"> {{fun.name}} </h6>  
+                <button cButton style="margin-top: 10px; background-color: rgb(249,177,21); color:#3c4b64; border-color:rgb(249,177,21);" class="ms-auto rounded-pill position-relative mx-2" >
                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
                    </svg>
                    <section id="report">
                       <div style="width: 100%; height: 100%" #reportContainer></div>
                    </section>
                 </button>
-                <button cButton style="background-color:rgb(181, 181, 181); border-color:rgb(181,181,181); color:#3c4b64;" type="button" class="rounded-pill position-relative mx-2" routerLink="../editfonction/{{fun.id}}">
+                <button cButton style=" margin-top: 10px; background-color:rgb(181, 181, 181); border-color:rgb(181,181,181); color:#3c4b64;" type="button" class="rounded-pill position-relative mx-2" routerLink="../editfonction/{{fun.id}}">
                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-task" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: #3c4b64;">
                    </svg>
                    <c-badge color="danger" position="top-end" shape="rounded-circle" class="p-2" cBorder="light">
                      <span class="visually-hidden">unread messages</span>
                    </c-badge>
                 </button>
-                <button cButton style="border-color: rgb(229, 83, 83); background-color: rgb(229, 83, 83);" type="button" class="rounded-pill position-relative mx-2" (click)="del(fun.id)">
+                <button cButton style="margin-top: 10px; border-color: orangered; background-color: orangered;" type="button" class="rounded-pill position-relative mx-2" (click)="del(fun.id)">
                    <svg _ngcontent-tjo-c219="" cIcon="" name="cil-trash" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" style="color: white;">
                    </svg>
                 </button>

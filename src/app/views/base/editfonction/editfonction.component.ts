@@ -22,7 +22,7 @@ export class EditfonctionComponent implements OnInit {
   stringed1 : any[][] = [[]];
   enabled : boolean = false; 
 
-  function_name : string = "Function name";
+  function_name : string = "Nom de la fonction";
   fun : Function;
   visib : boolean = false;
   error : boolean = false;
@@ -43,7 +43,7 @@ export class EditfonctionComponent implements OnInit {
     })
   }
 
-  displayStyle = "none";
+    displayStyle = "none";
   
   openPopup() {
     this.displayStyle = "block";
