@@ -1,18 +1,63 @@
 <c-card class="mb-4">
 
   <div class="text-medium-emphasis small progress-group-header" style="margin: 20px;">
-      <input value="{{id_customer}}" (keyup)="changed(1, $event)"  style="border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 218px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="ID Customer" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-      <input value="{{id_bct}}" (keyup)="changed(2,$event)" style="margin-left: 3px; border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 218px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="ID_BCT" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-      <input value="{{comp}}" (keyup)="changed(3,$event)" style="margin-left: 3px; border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 218px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="COMP" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
-      <input value="{{ref_crdt}}" (keyup)="changed(4,$event)" style="margin-left: 3px; border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 218px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="REF_CRDT" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+      <input value="{{id_customer}}" (keyup)="changed(1, $event)"  style="border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; width: 30%;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="ID Customer" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+      <button (click)="idc(id_customer)" cbutton class="btn" style="width: 50px; border-radius:20px; border-color: #3c4b64; background-color: #3c4b64;"> 
+        <svg cIcon name="cil-check" style="color: white;"></svg>
+      </button>
+
+      <input value="{{id_bct}}" (keyup)="changed(2,$event)" style="margin-left: 5px; border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; width: 30%;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="ID_BCT" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+      <button (click)="idBct(id_bct)" cbutton class="btn" style="width: 50px; border-radius:20px; border-color: #3c4b64; background-color: #3c4b64;"> 
+        <svg cIcon name="cil-check" style="color: white;"></svg>
+      </button>
+
+      <input value="{{comp}}" (keyup)="changed(3,$event)" style="margin-left: 5px; border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; width: 30%;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="COMP" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+      <button (click)="Comp(comp)" cbutton class="btn" style="width: 50px; border-radius:20px; border-color: #3c4b64; background-color: #3c4b64;"> 
+        <svg cIcon name="cil-check" style="color: white;"></svg>
+      </button>
+  </div>
+  <div class="text-medium-emphasis small progress-group-header" style="margin-bottom: 20px; margin-left: 20px; margin-right: 20px;">
+      <input value="{{ref_crdt}}" (keyup)="changed(4,$event)" style="border-width: 0px; background-color:  rgb(240, 240, 240); border-radius: 20px; width: 44%;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="REF_CRDT" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+      <button (click)="refCrdt(ref_crdt)" cbutton class="btn" style="width: 50px; border-radius:20px; border-color: #3c4b64; background-color: #3c4b64;"> 
+        <svg cIcon name="cil-check" style="color: white;"></svg>
+      </button>  
+
+      <select #cricket (click)="changed(5,$event)" style="margin-left: 5px; height: 40px; width: 218px; border-radius: 20px; background-color:rgb(243, 242, 242) ; border-color: rgb(243, 242, 242); width: 44%;">
+          <option value="default" style="color: rgb(180, 180, 180);">  ----</option>
+          <option *ngFor="let dat_sit of sellist" [value]="dat_sit" style="border: 0px; background-color: rgb(240, 240, 240); border-radius: 20px;">
+              {{dat_sit}}
+          </option>
+        </select>
+        <button  cbutton class="btn" style="margin-right: 5px; width: 50px; border-radius:20px; border-color: #3c4b64; background-color: #3c4b64;"> 
+          <svg cIcon name="cil-check" style="color: white;"></svg>
+        </button>
 
       <button (click)="trash()" cbutton class="btn ms-auto" style="width: 50px; border-radius:20px; border-color: orangered; background-color: orangered;"> 
         <svg cIcon name="cil-trash" style="color: white;"></svg>
       </button>
-      <button  cbutton class="btn ms-auto" style="width: 50px; border-radius:20px; border-color: #3c4b64; background-color: #3c4b64;"> 
-        <svg cIcon name="cil-check" style="color: white;"></svg>
-      </button>
   </div>
+
+  <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">   
+    <div style="margin-left: 20px;">
+      <small>{{badge}}</small>
+      <div>
+        <h5 class="card-title mb-0" id="traffic">
+          {{name}}
+        </h5>
+      </div>
+      <div class="small text-medium-emphasis"> > {{lib}}</div>
+      <div>
+            <small class="text-medium-emphasis">
+              ID : <strong>{{id}}</strong>
+            </small>  
+      </div>
+      <div>
+          <small class="text-medium-emphasis">
+            ID_BCT : <strong>{{idbct}}</strong>
+          </small> 
+      </div>
+    </div>
+  </c-card-body>
   
   <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">   
 
@@ -27,17 +72,17 @@
     <c-card _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242);border-radius: 20px; border-width: 0px;">
       <caption>Le client identifié par {{id_customer}}</caption>
       <div style="overflow:auto;">
-        <table style="table-layout: fixed; width:1000px;" >
-          <tr>
-            <td style="background-color: orangered; color: white; width: 50px; font-weight: bold; text-align: center;">#</td>
-            <td  style="height: 30px; background-color: orangered; color: white; font-weight: bold; width: 250px; text-align: center;">h</td>
-          </tr>
-          <tr>
-            <td style="font-weight: bold; width: 50px; text-align: center; color: orangered;">i</td>
-            <td  style="width: 250px; padding-left: 10px;">r</td>
-          </tr>
-        </table>
-      </div>
+        <table style="border-radius: 20px; table-layout: fixed; width:1000px;" >
+         <tr >
+           <td style="background-color: orangered; color: white; width: 50px; font-weight: bold; text-align: center;">#</td>
+           <td  style="height: 30px; background-color: orangered; color: white; font-weight: bold; width: 250px; text-align: center;">h</td>
+         </tr>
+         <tr>
+           <td style="font-weight: bold; width: 50px; text-align: center; color: orangered;">i</td>
+           <td  style="width: 250px; padding-left: 10px;">r</td>
+         </tr>
+       </table>
+       </div>
     </c-card>
   </c-card-body>
   

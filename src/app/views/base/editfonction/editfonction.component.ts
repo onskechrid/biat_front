@@ -20,7 +20,7 @@ export class EditfonctionComponent implements OnInit {
   result1 : string;
   stringed : any[][] = [[]];
   stringed1 : any[][] = [[]];
-  enabled : boolean = false; 
+  enable : boolean = true;
 
   function_name : string = "Nom de la fonction";
   fun : Function;
@@ -28,7 +28,7 @@ export class EditfonctionComponent implements OnInit {
   error : boolean = false;
 
   ngOnInit(): void {
-    this.enabled = false;
+    this.enable = true;
     console.log( this.route.snapshot.paramMap.get('id'));
     let baseApiUrl = "http://localhost:3000/get-function/" + this.route.snapshot.paramMap.get('id')
     this.http.get<Function>(baseApiUrl).subscribe(res => {
@@ -106,16 +106,15 @@ export class EditfonctionComponent implements OnInit {
       console.log(res);
       if(res == null){
         this.visib = true;
-        this.enabled = false;
+        this.enable = false;
       }
       if(res.length == 0){
         this.updateStatus(this.fun.id, 1);
-        this.enabled = true;
         return;
       }
       this.updateStatus(this.fun.id, 0);
       this.visib = false;
-      this.enabled = false;;
+      this.enable = true;
       //let obj = JSON.parse(res);
       this.result = res;
       Object.keys(res[0]).forEach(e => {

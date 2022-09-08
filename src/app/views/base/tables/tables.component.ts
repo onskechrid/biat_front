@@ -1,6 +1,7 @@
 import { query } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tables',
@@ -16,7 +17,7 @@ export class TablesComponent {
   main_container : boolean = false;
   qres : any[] = [];
   
-  constructor(private http : HttpClient) { }
+  constructor(private router : Router, private http : HttpClient) { }
   ngOnInit(): void {
     this.main_container = false;
     this.qres = [];
@@ -109,5 +110,9 @@ export class TablesComponent {
       })
       this.stringed.pop();
     })
+  }
+
+  sendTo(q : string){
+    this.router.navigateByUrl(`/base/addfonction/${q}`);
   }
 }

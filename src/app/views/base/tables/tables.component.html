@@ -6,7 +6,9 @@
     <button (click)="apply('x',query.value)" style="margin-left: 5px; margin-right: 5px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189); color: #3c4b64;" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" variant="outline" ng-reflect-color="secondary" ng-reflect-type="button" ng-reflect-variant="outline" class="btn btn-outline-secondary"> 
       <svg cIcon name="cil-check"></svg>
     </button>
-  
+    <button (click)="sendTo(query.value)" style="margin-left: 5px; margin-right: 5px; border-radius:20px; border-color:red; background-color: red; color: #3c4b64;" _ngcontent-tjo-c224="" cbutton="" color="secondary" id="button-addon2" type="button" variant="outline" ng-reflect-color="secondary" ng-reflect-type="button" ng-reflect-variant="outline" class="btn btn-outline-secondary"> 
+      <svg cIcon name="cil-check"></svg>
+    </button>
     <button cButton color="warning" class="rounded-pill position-relative ms-auto" style="border-radius: 5px;" routerLink="../powerbi">
       <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="icon" ng-reflect-content="" ng-reflect-name="cil-task" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
       </svg>
@@ -20,56 +22,11 @@
     </button>
   </div>
   
-  <c-card-body [hidden]="main_container==true" _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">   
-    <c-card  *ngFor="let table of tables; let n = index" _ngcontent-tjo-c224="" class="mb-4 card">
-      <c-card-header _ngcontent-tjo-c224="" class="card-header">
-        <table style="width: 100%;">
-          <tr>
-            <td style="width: 99%;">
-              <strong _ngcontent-tjo-c224="" style="text-transform: uppercase;"> {{table.name}} </strong>
-            </td>
-            <td>
-              <button _ngcontent-tjo-c219="" cbutton class="rounded-pill btn btn-warning" ng-reflect-active="false" ng-reflect-disabled="false" type="button">
-                <svg _ngcontent-tjo-c219="" cIcon="" name="cil-chart" class="icon" ng-reflect-content="" ng-reflect-name="cil-chart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img">
-                </svg>
-              </button>
-            </td>
-          </tr>
-        </table>
-      </c-card-header>
+  
 
-      <c-card-body _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin: 10px; border-radius: 20px; ">
-        <div style="overflow:auto;">
-        <!--<table *ngFor="let res of qres[n]; let i = index" [bordered]="true" cTable style="table-layout: fixed; width: 100%; background-color: rgb(250, 248, 248);">
-          <thead *ngIf="i == 0" cTableColor="dark">
-             <tr>
-                <th scope="col">#</th>
-                <th *ngFor="let h of res" scope="col">{{h}}</th>
-             </tr>
-          </thead>
-          <tbody  *ngIf="i > 0">
-             <tr>
-                <th scope="row">{{i}}</th>
-                <td *ngFor="let r of res">{{r}}</td>
-             </tr>
-          </tbody>
-       </table>-->
-       <table *ngFor="let res of table.data; let i = index" style="border-radius: 20px; table-layout: fixed; width:1000px;" >
-        <tr *ngIf="i == 0">
-          <td style="background-color: orangered; color: white; width: 50px; font-weight: bold; text-align: center;">#</td>
-          <td *ngFor="let h of res" style="height: 30px; background-color: orangered; color: white; font-weight: bold; width: 250px; text-align: center;">{{h}}</td>
-        </tr>
-        <tr *ngIf="i > 0">
-          <td style="font-weight: bold; width: 50px; text-align: center; color: orangered;">{{i}}</td>
-          <td *ngFor="let r of res" style="width: 250px; padding-left: 10px;">{{r}}</td>
-        </tr>
-      </table>
-      </div>
-      </c-card-body>
-    </c-card>
-  </c-card-body>
+    
 
-  <c-card-body [hidden]="main_container == false" _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">
+  <c-card-body  _ngcontent-tjo-c224="" class="card-body" style="background-color: rgb(243, 242, 242); margin-left:15px; margin-right: 15px; margin-bottom: 15px; border-radius: 20px; ">
     <!--<table *ngFor="let res of stringed; let i = index" [bordered]="true" cTable style="table-layout: fixed; width: 100%; background-color: rgb(250, 248, 248);">
       <thead *ngIf="i == 0" cTableColor="dark">
          <tr>

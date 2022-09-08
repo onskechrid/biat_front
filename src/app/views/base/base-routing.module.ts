@@ -52,6 +52,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'addfonction/:query',
+        component: AddfonctionComponent,
+        data: {
+          title: 'Ajouter une fonction'
+        }
+      },
+      {
         path: 'editfonction/:id',
         component: EditfonctionComponent,
         data: {

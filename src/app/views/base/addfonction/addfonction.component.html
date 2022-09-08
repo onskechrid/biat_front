@@ -31,7 +31,7 @@
         </c-card-header>
 
         <div class="progress-group-header" style="margin-top: 20px; margin-left: 30px; margin-right: 30px;">
-            <input #qer style="border-width: 0px; margin-right: 3px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Requête de la fonction" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
+            <input #qer value="{{qs}}" style="border-width: 0px; margin-right: 3px; background-color:  rgb(240, 240, 240); border-radius: 20px; max-width: 900px;" _ngcontent-oem-c220="" aria-label="input example" cformcontrol="" placeholder="Requête de la fonction" type="text" ng-reflect-sizing="" ng-reflect-type="text" class="form-control">
             <p *ngIf="visib == true" style="color: red;">Error!</p>
             <button (click)="apply('x', qer.value )" _ngcontent-tjo-c224="" cbutton type="button" class="btn ms-auto" style="width: 70px; border-radius:20px; border-color:rgb(190, 189, 189); background-color:  rgb(190, 189, 189);"> 
                 <svg cIcon name="cil-check"></svg>
@@ -74,7 +74,7 @@
         </c-card-body>
     </c-card>
 
-    <button [disabled]="enabled == false" (click)="save(name.value, qer.value, qererr.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
+    <button [disabled]="enable == false" (click)="save(name.value, qer.value, qererr.value)" _ngcontent-tjo-c219="" cbutton="" class="me-1 btn btn-light" ng-reflect-active="false" 
     ng-reflect-color="" ng-reflect-disabled="false" type="button" routerLink="../fonctions"
     style="margin-bottom: 20px; margin-left: 900px; max-width: 120px; color: white; background-color: #3c4b64; border-color: #3c4b64;">
         Ajouter

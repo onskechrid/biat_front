@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-addfonction',
@@ -8,15 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddfonctionComponent implements OnInit {
 
-  constructor(private http : HttpClient) { }
+  constructor(private router : ActivatedRoute, private http : HttpClient) { }
   result : string;
   stringed : any[][] = [[]];
   function_name : string = "Nom de la fonction";
   visib : boolean = false;
-  enabled : boolean = false;
-
+  enable : boolean = true
+  qs : string = ""
   ngOnInit(): void {
-    this.enabled = false;
+    this.enable = true;
+    if(this.router.snapshot.paramMap.get('query')){
+      this.qs = this.router.snapshot.paramMap.get('query')
+    }
   }
 
   /*displayStyle = "none";
@@ -37,14 +41,13 @@ export class AddfonctionComponent implements OnInit {
     this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
       if(res == null){
         this.visib = true;
-        this.enabled = false;
+        this.enable = false;
       }else{
         this.visib = false;
+        this.enable = true
       }
       if(res.length == 0){
-        this.enabled = true;
       }else{
-        this.enabled = false;
       }
       console.log(res);
       //let obj = JSON.parse(res);
