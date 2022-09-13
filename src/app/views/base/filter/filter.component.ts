@@ -38,8 +38,7 @@ export class FilterComponent implements OnInit {
   router: any;
   total : string="";
 
-  constructor(private http: HttpClient) { this.query= localStorage.getItem('query');
-  this.query2= localStorage.getItem('query2'); }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {  
     let baseApiUrl = "http://localhost:3000/alldatsit"
