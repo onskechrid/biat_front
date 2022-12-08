@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './views/base/login/login.component';
 
 import { DefaultLayoutComponent } from './containers';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
+  },
+  {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -39,6 +47,11 @@ const routes: Routes = [
       {
         path: 'filter',
         loadChildren: () =>
+          import('./views/base/base.module').then((m) => m.BaseModule)
+      },
+      {
+        path: 'historique',
+        loadChildren: () => 
           import('./views/base/base.module').then((m) => m.BaseModule)
       }
     ]

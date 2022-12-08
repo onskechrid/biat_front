@@ -4,7 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppModule } from 'src/app/app.module';
-import { Function } from '../fonctions/function.model';
+import { Function } from '../functions/function.model';
 import * as XLSX from 'xlsx'; 
 
 

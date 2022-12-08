@@ -25,6 +25,11 @@ export const navItems: INavData[] = [
     name: 'Filtre',
     url: '/base/filter',
     iconComponent: { name: 'cil-filter' }
+  },
+  {
+    name: 'Historique',
+    url: '/base/historique',
+    iconComponent: { name: 'cil-history' }
   }
   
 ];
