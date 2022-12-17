@@ -21,16 +21,17 @@ export class TablesComponent {
   ngOnInit(): void {
     this.main_container = false;
     this.qres = [];
-    let baseApiUrl = "http://localhost:3000/get-tables"
+    this.nbrwrongfunct()
+    /*let baseApiUrl = "http://localhost:3000/get-tables"
     this.http.get<string[]>(baseApiUrl).subscribe(res => {
       res.forEach((e) => {
        this.getDataForEachTable(e)
       })
       this.nbrwrongfunct()
-    })
+    })*/
   }
 
-  getDataForEachTable(e) : any{
+  /*getDataForEachTable(e) : any{
     console.log(e)
     this.main_container = false;
     let baseApiUrl = "http://localhost:3000/query/x"
@@ -70,14 +71,15 @@ export class TablesComponent {
       this.tables.push(o);
     }
     })
-  }
+  }*/
+  
   changed(event : any){
     if(event.target.value.length == 0){
       this.main_container = false;
     }
   }
   nbrwrongfunct(){
-    let baseApiUrl = "http://localhost:3000/nbrwrongFunction"
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/nbrwrongfunctions"
     this.http.get<number>(baseApiUrl).subscribe(res => {
       
        this.number = res[0].n})

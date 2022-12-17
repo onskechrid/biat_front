@@ -21,7 +21,7 @@ export class FonctionsComponent implements OnInit {
   
   ngOnInit(): void {
     this.switch = false;
-    let baseApiUrl = "http://localhost:3000/show-function"
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/showAll"
     this.http.get<Function[]>(baseApiUrl).subscribe(res => {
       this.functions = res;
       this.checkfns();
@@ -36,7 +36,7 @@ export class FonctionsComponent implements OnInit {
 
   checkfns(){
     this.functions.forEach((e) =>{
-      let baseApiUrl = "http://localhost:3000/query/x"
+      let baseApiUrl = "http://localhost:8080/api/v1/functions/query/x"
       this.http.post<any>(baseApiUrl, {query : e.query}).subscribe(res => {
         console.log(res);
         if(res.length == 0){
@@ -102,7 +102,7 @@ export class FonctionsComponent implements OnInit {
   del(id : number){
     console.log(id);
     
-    let baseApiUrl = "http://localhost:3000/delete-function/" + id
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/delete" + id
     this.http.delete<any>(baseApiUrl).subscribe(res => {  
     })
     window.location.reload();
