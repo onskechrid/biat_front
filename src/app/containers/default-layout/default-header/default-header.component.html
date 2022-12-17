@@ -24,6 +24,9 @@
           </a>
         </c-nav-item>
       </c-header-nav>
+      <c-header-nav class="ms-3">
+        <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+      </c-header-nav>
 
     </c-container>
     <c-header-divider></c-header-divider>
@@ -31,8 +34,11 @@
       <c-breadcrumb-router class="ms-2"></c-breadcrumb-router>
     </c-container>
   </ng-container>
-
-
+  <ng-template #userDropdown>
+    <c-dropdown alignment="end" variant="nav-item">
+      <a style="font-weight: bold; color: rgb(3, 197, 3);">NOM UTILISATEUR</a>
+    </c-dropdown>
+  </ng-template>
   
   <!--</c-header>-->
   

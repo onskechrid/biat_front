@@ -12,6 +12,7 @@ import {
   cibSkype,
   cibTwitter,
   cilCloudUpload,
+  cilHistory,
   cilFilter,
   cibAddthis,
   cilSearch,
@@ -93,8 +94,7 @@ import {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
-  cilBorderAll,
-  cilHistory
+  cilBorderAll
 } from '@coreui/icons';
 
 export const iconSubset = {

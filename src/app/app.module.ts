@@ -48,7 +48,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { PowerbiComponent } from './views/base/powerbi/powerbi.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
+import { LoginComponent } from './views/base/login/login.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -61,7 +61,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, PowerbiComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, PowerbiComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

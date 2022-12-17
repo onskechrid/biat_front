@@ -39,10 +39,11 @@ import { TablesComponent } from './tables/tables.component';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
-import { FonctionsComponent } from './fonctions/fonctions.component';
-import { AddfonctionComponent } from './addfonction/addfonction.component';
-import { EditfonctionComponent } from './editfonction/editfonction.component';
+import { FonctionsComponent } from './functions/fonctions.component';
+import { AddfonctionComponent } from './addfunction/addfonction.component';
+import { EditfonctionComponent } from './editfunction/editfonction.component';
 import { FilterComponent } from './filter/filter.component';
+import { HistoriqueComponent } from './history/historique.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { FilterComponent } from './filter/filter.component';
     FonctionsComponent,
     AddfonctionComponent,
     EditfonctionComponent,
-    FilterComponent
+    FilterComponent,
+    HistoriqueComponent
   ],
 })
 export class BaseModule {}

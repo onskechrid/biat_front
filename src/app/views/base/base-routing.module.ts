@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddfonctionComponent } from './addfonction/addfonction.component';
+import { AddfonctionComponent } from './addfunction/addfonction.component';
 
 import { DatabaseComponent } from './database/database.component';
-import { EditfonctionComponent } from './editfonction/editfonction.component';
-import { FonctionsComponent } from './fonctions/fonctions.component';
+import { EditfonctionComponent } from './editfunction/editfonction.component';
+import { FonctionsComponent } from './functions/fonctions.component';
 import { PowerbiComponent } from './powerbi/powerbi.component';
 import { TablesComponent } from './tables/tables.component';
 import { FilterComponent } from './filter/filter.component';
+import { HistoriqueComponent } from './history/historique.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,13 @@ const routes: Routes = [
         component: PowerbiComponent,
         data: {
           title: 'Powerbi'
+        }
+      },
+      {
+        path: 'historique',
+        component: TablesComponent,
+        data: {
+          title: 'Historique',
         }
       }
     ]
