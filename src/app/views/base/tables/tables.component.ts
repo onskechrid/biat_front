@@ -84,14 +84,13 @@ export class TablesComponent {
       
        this.number = res[0].n})
   };
-  apply(table_name : string, query : string){
+  apply(queryinput : string){
     this.main_container = true;
     this.stringed = [[]];
-    console.log(table_name);
-    console.log(query);
+    console.log(queryinput);
     
-    let baseApiUrl = "http://localhost:3000/query/"+table_name
-    this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/"+ queryinput
+    this.http.post<any>(baseApiUrl, {query : queryinput}).subscribe(res => {
       console.log(res);
       //let obj = JSON.parse(res);
       this.result = res;
