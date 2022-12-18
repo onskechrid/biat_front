@@ -74,7 +74,7 @@ export class FonctionsComponent implements OnInit {
     }
   }
   updateStatus(id : number, update : number){
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/update_status/"+id+"/" + update
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/update_fn_status/"+id+"/" + update
     this.http.get(baseApiUrl).subscribe(res => {
     });
   }
