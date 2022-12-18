@@ -24,7 +24,7 @@ export class FonctionsComponent implements OnInit {
     let baseApiUrl = "http://localhost:8080/api/v1/functions/showAll"
     this.http.get<Function[]>(baseApiUrl).subscribe(res => {
       this.functions = res;
-      this.checkfns();
+      //this.checkfns();
       //window.location.reload();
     })
   }
@@ -36,7 +36,7 @@ export class FonctionsComponent implements OnInit {
 
   checkfns(){
     this.functions.forEach((e) =>{
-      let baseApiUrl = "http://localhost:8080/api/v1/functions/query/x"
+      let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/x"
       this.http.post<any>(baseApiUrl, {query : e.query}).subscribe(res => {
         console.log(res);
         if(res.length == 0){
@@ -51,7 +51,7 @@ export class FonctionsComponent implements OnInit {
   }
   checkValue(event : any){
     if(event.target.checked == true){
-      let baseApiUrl = "http://localhost:3000/show-function"
+      let baseApiUrl = "http://localhost:8080/api/v1/functions/showAll"
       this.http.get<Function[]>(baseApiUrl).subscribe(res => {
         let k : Function[] = [];
         res.forEach((e) => {
@@ -65,7 +65,7 @@ export class FonctionsComponent implements OnInit {
         //window.location.reload();
       })
     }else{
-      let baseApiUrl = "http://localhost:3000/show-function"
+      let baseApiUrl = "http://localhost:8080/api/v1/functions/showAll"
       this.http.get<Function[]>(baseApiUrl).subscribe(res => {
         this.functions = res;
         this.checkfns();
@@ -74,14 +74,14 @@ export class FonctionsComponent implements OnInit {
     }
   }
   updateStatus(id : number, update : number){
-    let baseApiUrl = "http://localhost:3000/update-fn-status/"+id+"/" + update
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/update_status/"+id+"/" + update
     this.http.get(baseApiUrl).subscribe(res => {
     });
   }
   search(text : string){
     console.log(text);
     
-    let baseApiUrl = "http://localhost:3000/show-function"
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/showAll"
     this.http.get<Function[]>(baseApiUrl).subscribe(res => {
       let k : Function[] = [];
       res.forEach((e) => {

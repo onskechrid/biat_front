@@ -41,7 +41,7 @@ export class FilterComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {  
-    let baseApiUrl = "http://localhost:3000/alldatsit"
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/alldatsit"
     this.http.get<string[]>(baseApiUrl).subscribe(res => {
       let arr = [];
       for(let i = 0; i<=res.length-1; i++){
@@ -99,7 +99,7 @@ export class FilterComponent implements OnInit {
     console.log(table_name);
     console.log(query);
     console.log(this.q1)
-    let baseApiUrl = "http://localhost:3000/query/"+table_name
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/"+table_name
     this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
       console.log(res);
       //let obj = JSON.parse(res);
@@ -127,7 +127,7 @@ export class FilterComponent implements OnInit {
   somme(id : string , datsit: number){ 
     console.log(id);
     console.log(datsit);
-    let baseApiUrl = "http://localhost:3000/total/"+id+"/"+datsit
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/total/"+id+"/"+datsit
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.total = Object.values(res)[0];
@@ -168,7 +168,7 @@ export class FilterComponent implements OnInit {
   }
   validate_id_name(id_customer:string){ 
     console.log("name");
-    let baseApiUrl = "http://localhost:3000/name1/"+id_customer
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/nameidcustomer/"+id_customer
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.name = Object.values(res)[0];
@@ -177,7 +177,7 @@ export class FilterComponent implements OnInit {
   validate_id_idbct(id_customer:string){ 
     console.log("idbct");
     console.log("idcustomer", id_customer)
-    let baseApiUrl = "http://localhost:3000/idbct1/"+id_customer
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/idbctidcustomer/"+id_customer
       this.http.get<string>(baseApiUrl).subscribe(res => {
         console.log(Object.values(res)[0])
         this.idbct = Object.values(res)[0];
@@ -186,7 +186,7 @@ export class FilterComponent implements OnInit {
   validate_id_lib(id_customer:string){ 
     console.log("lib");
     console.log(this.lib)
-    let baseApiUrl = "http://localhost:3000/lib1/"+id_customer
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/liblidcustomer/"+id_customer
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.lib = Object.values(res)[0];
@@ -217,7 +217,7 @@ export class FilterComponent implements OnInit {
   
   validate_idbct_id(id_bct:string){ 
     console.log("id")
-    let baseApiUrl = "http://localhost:3000/id2/"+id_bct
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/ididbct/"+id_bct
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.id = Object.values(res)[0];
@@ -225,7 +225,7 @@ export class FilterComponent implements OnInit {
   }
   validate_idbct_name(id_bct:string){ 
     console.log("name");
-    let baseApiUrl = "http://localhost:3000/name2/"+id_bct
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/nameidbct/"+id_bct
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.name = Object.values(res)[0];
@@ -238,7 +238,7 @@ export class FilterComponent implements OnInit {
   validate_idbct_lib(id_bct:string){ 
     console.log("lib");
     console.log(this.lib)
-    let baseApiUrl = "http://localhost:3000/lib2/"+id_bct
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/liblidbct/"+id_bct
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.lib = Object.values(res)[0];
@@ -268,7 +268,7 @@ export class FilterComponent implements OnInit {
   
   validate_comp_id(comp:string){ 
     console.log("id")
-    let baseApiUrl = "http://localhost:3000/id3/"+comp
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/idcomp/"+comp
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.id = Object.values(res)[0];
@@ -276,7 +276,7 @@ export class FilterComponent implements OnInit {
   }
   validate_comp_name(comp:string){ 
     console.log("name");
-    let baseApiUrl = "http://localhost:3000/name3/"+comp
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/namecomp/"+comp
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.name = Object.values(res)[0];
@@ -284,7 +284,7 @@ export class FilterComponent implements OnInit {
   }
   validate_comp_idbct(comp:string){ 
     console.log("idbct");
-    let baseApiUrl = "http://localhost:3000/idbct3/"+comp
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/idbctcomp/"+comp
       this.http.get<string>(baseApiUrl).subscribe(res => {
         console.log(Object.values(res)[0])
         this.idbct = Object.values(res)[0];
@@ -293,7 +293,7 @@ export class FilterComponent implements OnInit {
   validate_comp_lib(comp:string){ 
     console.log("lib");
     console.log(this.lib)
-    let baseApiUrl = "http://localhost:3000/lib3/"+comp
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/liblcomp/"+comp
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.lib = Object.values(res)[0];
@@ -323,7 +323,7 @@ export class FilterComponent implements OnInit {
   
   validate_refcrdt_id(ref_crdt:string){ 
     console.log("id")
-    let baseApiUrl = "http://localhost:3000/id4/"+ref_crdt
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/idrefcrdt/"+ref_crdt
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.id = Object.values(res)[0];
@@ -331,7 +331,7 @@ export class FilterComponent implements OnInit {
   }
   validate_refcrdt_name(ref_crdt:string){ 
     console.log("name");
-    let baseApiUrl = "http://localhost:3000/name4/"+ref_crdt
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/nameidrefcrdt/"+ref_crdt
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.name = Object.values(res)[0];
@@ -339,7 +339,7 @@ export class FilterComponent implements OnInit {
   }
   validate_refcrdt_idbct(ref_crdt:string){ 
     console.log("idbct");
-    let baseApiUrl = "http://localhost:3000/idbct4/"+ref_crdt
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/idbctidrefcrdt/"+ref_crdt
       this.http.get<string>(baseApiUrl).subscribe(res => {
         console.log(Object.values(res)[0])
         this.idbct = Object.values(res)[0];
@@ -348,7 +348,7 @@ export class FilterComponent implements OnInit {
   validate_refcrdt_lib(ref_crdt:string){ 
     console.log("lib");
     console.log(this.lib)
-    let baseApiUrl = "http://localhost:3000/lib4/"+ref_crdt
+    let baseApiUrl = "http://localhost:8080/api/v1/filter/liblidrefcrdt/"+ref_crdt
       this.http.get<string>(baseApiUrl).subscribe(res => {
       console.log(Object.values(res)[0])
       this.lib = Object.values(res)[0];

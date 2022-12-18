@@ -38,7 +38,7 @@ export class AddfonctionComponent implements OnInit {
     console.log(table_name);
     console.log(query);
     
-    let baseApiUrl = "http://localhost:3000/query/"+table_name
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/"+table_name
     this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
       if(res == null){
         this.visib = true;
@@ -72,7 +72,7 @@ export class AddfonctionComponent implements OnInit {
     })
   }
   save(name : string, query : string, querr : string){
-    let baseApiUrl = "http://localhost:3000/add-function";
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/add";
     if(querr != ""){
       this.http.post<any>(baseApiUrl, {query_error: querr, query : query, status : 1, name : name}).subscribe(res => {
         console.log(res);

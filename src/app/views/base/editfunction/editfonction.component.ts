@@ -30,7 +30,7 @@ export class EditfonctionComponent implements OnInit {
   ngOnInit(): void {
     this.enable = true;
     console.log( this.route.snapshot.paramMap.get('id'));
-    let baseApiUrl = "http://localhost:3000/get-function/" + this.route.snapshot.paramMap.get('id')
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/get/" + this.route.snapshot.paramMap.get('id')
     this.http.get<Function>(baseApiUrl).subscribe(res => {
       this.fun = res;
       console.log(this.fun);
@@ -53,12 +53,12 @@ export class EditfonctionComponent implements OnInit {
     this.fun.name = f;
   }
   updateStatus(id : number, update : number){
-    let baseApiUrl = "http://localhost:3000/update-fn-status/"+id+"/" + update
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/editstatus/"+id+"/" + update
     this.http.get(baseApiUrl).subscribe(res => {
     });
   }
   executeErrorQuery(err_quey : string){
-    let baseApiUrl = "http://localhost:3000/query/x"
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/x"
     this.http.post<any>(baseApiUrl, {query : err_quey}).subscribe(res => {
       if((res == null) || (res.length == 0)){
         this.error = false;
@@ -101,7 +101,7 @@ export class EditfonctionComponent implements OnInit {
     console.log(table_name);
     console.log(query);
     
-    let baseApiUrl = "http://localhost:3000/query/"+table_name
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/"+table_name
     this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
       console.log(res);
       if(res == null){
@@ -138,7 +138,7 @@ export class EditfonctionComponent implements OnInit {
   save(name : string, query : string, error : string){
     console.log(error);
     
-    let baseApiUrl = "http://localhost:3000/mod-function/" + this.route.snapshot.paramMap.get('id');
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/edit/" + this.route.snapshot.paramMap.get('id');
     this.http.post<any>(baseApiUrl, {id: this.route.snapshot.paramMap.get('id'), query : query, status : 1, name : name, query_error : error}).subscribe(res => {
       console.log(res);
     })
