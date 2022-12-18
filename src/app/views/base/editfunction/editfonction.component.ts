@@ -53,7 +53,7 @@ export class EditfonctionComponent implements OnInit {
     this.fun.name = f;
   }
   updateStatus(id : number, update : number){
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/editstatus/"+id+"/" + update
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/updateFnStatus/"+id+"/" + update
     this.http.get(baseApiUrl).subscribe(res => {
     });
   }
