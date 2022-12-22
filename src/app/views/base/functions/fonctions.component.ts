@@ -31,8 +31,8 @@ export class FonctionsComponent implements OnInit {
   ngAfterContentInit() : void{
     this.checkfns();
   }
-  report: pbi.Embed;
-  @ViewChild('reportContainer', { static: false }) reportContainer: ElementRef;
+  /*report: pbi.Embed;
+  @ViewChild('reportContainer', { static: false }) reportContainer: ElementRef;*/
 
   checkfns(){
     this.functions.forEach((e) =>{
@@ -102,42 +102,9 @@ export class FonctionsComponent implements OnInit {
   del(id : number){
     console.log(id);
     
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/delete" + id
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/delete/"+id
     this.http.delete<any>(baseApiUrl).subscribe(res => {  
     })
     window.location.reload();
   }
-  showReport(Token) {
-    // Embed URL    
-    let embedUrl = environment.powerBI.reportBaseURL;
-    let embedReportId = environment.powerBI.reportID;
-  let settings: pbi.IEmbedSettings = {
-      filterPaneEnabled: false,
-      navContentPaneEnabled: false,
-    };
-  let config: pbi.IEmbedConfiguration = {
-      type: 'report',
-      tokenType: pbi.models.TokenType.Embed,
-      accessToken: Token.token,
-      embedUrl: embedUrl,
-      id: embedReportId,
-      filters: [],
-      settings: settings
-    };
-  let reportContainer = this.reportContainer.nativeElement;
-    let powerbi = new pbi.service.Service(pbi.factories.hpmFactory, pbi.factories.wpmpFactory, pbi.factories.routerFactory);
-    this.report = powerbi.embed(reportContainer, config);
-    this.report.off("loaded");
-  this.report.on("loaded", () => {
-      console.log("Loaded");
-      this.setTokenExpirationListener(Token.expiration, 2);
-    });
-  this.report.on("error", () => {
-      console.log("Error");
-    });
-  }
-  setTokenExpirationListener(expiration: any, arg1: number) {
-    throw new Error('Method not implemented.');
-  }
-
 }

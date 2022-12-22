@@ -30,20 +30,16 @@ export class EditfonctionComponent implements OnInit {
   ngOnInit(): void {
     this.enable = true;
     console.log( this.route.snapshot.paramMap.get('id'));
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/get/" + this.route.snapshot.paramMap.get('id')
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/"+ this.route.snapshot.paramMap.get('id')
     this.http.get<Function>(baseApiUrl).subscribe(res => {
       this.fun = res;
       console.log(this.fun);
-      if((this.fun.query_error != "Indéfinie") && (this.fun.query_error != "")){
-        this.executeErrorQuery(this.fun.query_error);   
-      }else{
-        this.executeErrorQuery(this.fun.query);  
-      }
-      this.apply('x', this.fun.query)  
+      this.apply(this.fun.query);
+      this.executeExcelQuery(this.fun.queryexcel);
     })
   }
 
-    displayStyle = "none";
+  displayStyle = "none";
   
   openPopup() {
     this.displayStyle = "block";
@@ -52,39 +48,38 @@ export class EditfonctionComponent implements OnInit {
     this.displayStyle = "none";
     this.fun.name = f;
   }
-  updateStatus(id : number, update : number){
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/updateFnStatus/"+id+"/" + update
+  updateStatus(id : number, bool : number){
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/updateFnStatus/"+id+"/"+bool
     this.http.get(baseApiUrl).subscribe(res => {
+      console.log(res);
     });
   }
-  executeErrorQuery(err_quey : string){
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/x"
-    this.http.post<any>(baseApiUrl, {query : err_quey}).subscribe(res => {
-      if((res == null) || (res.length == 0)){
-        this.error = false;
-        return;
-      }else{
-        this.error = true;
-        //let obj = JSON.parse(res);
-        this.result1 = res;
-        Object.keys(res[0]).forEach(e => {
-          this.stringed1[0].push(e);
-        })
-        this.stringed1.push([]);
-        console.log(this.stringed1);
-        let r = 1;
-        res.forEach(k => {
-          Object.values(k).forEach(t => {
-            console.log(t);
-            
-            this.stringed1[r].push(t);
-          });
-          r++;
-          this.stringed1.push([]);
-        })
-        this.stringed1.pop();
-      }
-    });
+  executeExcelQuery(queryinput : string){
+    this.stringed = [[]];
+    console.log(queryinput);
+    
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/query/"+ queryinput
+    this.http.get<any>(baseApiUrl).subscribe(res => {
+      console.log(res);
+      //let obj = JSON.parse(res);
+      this.result = res;
+      Object.keys(res[0]).forEach(e => {
+        this.stringed[0].push(e);
+      })
+      this.stringed.push([]);
+      console.log(this.stringed);
+      let r = 1;
+      res.forEach(k => {
+        Object.values(k).forEach(t => {
+          console.log(t);
+          
+          this.stringed[r].push(t);
+        });
+        r++;
+        this.stringed.push([]);
+      })
+      this.stringed.pop();
+    })
   }
 
   showExcel(){
@@ -96,13 +91,13 @@ export class EditfonctionComponent implements OnInit {
     /* save to file */
     XLSX.writeFile(wb, 'errors.xlsx');
   }
-  apply(table_name : string, query : string){
+  
+  apply(queryinput : string){
     this.stringed = [[]];
-    console.log(table_name);
-    console.log(query);
+    console.log(queryinput);
     
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/"+table_name
-    this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/query/"+ queryinput
+    this.http.get<any>(baseApiUrl).subscribe(res => {
       console.log(res);
       if(res == null){
         this.visib = true;
@@ -135,11 +130,10 @@ export class EditfonctionComponent implements OnInit {
       this.stringed.pop();
     })
   }
-  save(name : string, query : string, error : string){
-    console.log(error);
-    
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/edit/" + this.route.snapshot.paramMap.get('id');
-    this.http.post<any>(baseApiUrl, {id: this.route.snapshot.paramMap.get('id'), query : query, status : 1, name : name, query_error : error}).subscribe(res => {
+  save(name : string, query : string, queryexcel : string){
+    console.log(queryexcel);
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/" + this.route.snapshot.paramMap.get('id');
+    this.http.put<any>(baseApiUrl, {id: this.route.snapshot.paramMap.get('id'), query : query, status : 1, name : name, queryexcel : queryexcel}).subscribe(res => {
       console.log(res);
     })
     this.router.navigate(['base/fonctions'])

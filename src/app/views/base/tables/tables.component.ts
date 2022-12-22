@@ -2,6 +2,7 @@ import { query } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { count } from 'rxjs';
 
 @Component({
   selector: 'app-tables',
@@ -16,6 +17,7 @@ export class TablesComponent {
   stringed : any[][] = [[]];
   main_container : boolean = false;
   qres : any[] = [];
+
   
   constructor(private router : Router, private http : HttpClient) { }
   ngOnInit(): void {
@@ -81,16 +83,15 @@ export class TablesComponent {
   nbrwrongfunct(){
     let baseApiUrl = "http://localhost:8080/api/v1/functions/nbrwrongfunctions"
     this.http.get<number>(baseApiUrl).subscribe(res => {
-      
-       this.number = res[0].n})
+       this.number = res});
   };
   apply(queryinput : string){
     this.main_container = true;
     this.stringed = [[]];
     console.log(queryinput);
     
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/"+ queryinput
-    this.http.post<any>(baseApiUrl, {query : queryinput}).subscribe(res => {
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/query/"+ queryinput
+    this.http.get<any>(baseApiUrl).subscribe(res => {
       console.log(res);
       //let obj = JSON.parse(res);
       this.result = res;

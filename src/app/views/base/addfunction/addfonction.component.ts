@@ -24,32 +24,12 @@ export class AddfonctionComponent implements OnInit {
     }
   }
 
-  /*displayStyle = "none";
-  
-  openPopup() {
-    this.displayStyle = "block";
-  }
-  closePopup(f : string) {
-    this.displayStyle = "none";
-    this.function_name = f;
-  }*/
-  apply(table_name : string, query : string){
+  apply(queryinput : string){
     this.stringed = [[]];
-    console.log(table_name);
-    console.log(query);
+    console.log(queryinput);
     
-    let baseApiUrl = "http://localhost:8080/api/v1/functions/queryinput/"+table_name
-    this.http.post<any>(baseApiUrl, {query : query}).subscribe(res => {
-      if(res == null){
-        this.visib = true;
-        this.enable = false;
-      }else{
-        this.visib = false;
-        this.enable = true
-      }
-      if(res.length == 0){
-      }else{
-      }
+    let baseApiUrl = "http://localhost:8080/api/v1/functions/query/"+ queryinput
+    this.http.get<any>(baseApiUrl).subscribe(res => {
       console.log(res);
       //let obj = JSON.parse(res);
       this.result = res;
@@ -74,7 +54,7 @@ export class AddfonctionComponent implements OnInit {
   save(name : string, query : string, querr : string){
     let baseApiUrl = "http://localhost:8080/api/v1/functions/add";
     if(querr != ""){
-      this.http.post<any>(baseApiUrl, {query_error: querr, query : query, status : 1, name : name}).subscribe(res => {
+      this.http.post<any>(baseApiUrl, {queryexcel: querr, query : query, status : 1, name : name}).subscribe(res => {
         console.log(res);
       })
     }else{

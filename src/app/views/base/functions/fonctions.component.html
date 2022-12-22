@@ -19,16 +19,10 @@
       <c-card-body>
         <div  *ngFor="let fun of functions">
           <div *ngIf="fun.status == 1" style="background-color:#d9fce4;" class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
-             <!--<div class="fs-5 fw-semibold progress-group-header">
-                <span style="color: #3c4b64;"> {{fun.name}} </span>
-             </div>-->
              <div class="text-medium-emphasis small progress-group-header">
                 <h6 style="margin-top: 10px; color: #3c4b64; width: 700px;"> {{fun.name}} </h6>
                 <button cButton style="margin-top: 10px; background-color: rgb(249,177,21); color:#3c4b64; border-color:rgb(249,177,21);" class="ms-auto rounded-pill position-relative mx-2" >
                    <svg cIcon="" name="cil-chart" class="icon"></svg>
-                   <section id="report">
-                      <div style="width: 100%; height: 100%" #reportContainer></div>
-                   </section>
                 </button>
                 <button cButton style="margin-top: 10px; background-color:rgb(181, 181, 181); border-color:rgb(181,181,181); color:#3c4b64;" type="button" class="rounded-pill position-relative mx-2" routerLink="../editfonction/{{fun.id}}">
                    <svg cIcon="" name="cil-task" ></svg>

@@ -3,6 +3,6 @@ export class Function{
     name : string;
     status : number;
     query : string;
-    query_error : string;
+    queryexcel : string;
     last_edit : Date
 }
