@@ -1,33 +1,164 @@
 <!--sidebar-->
-<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed" id="sidebar" visible> 
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed" id="sidebar" visible>
 
-  <c-sidebar-brand [brandFull]="{ src: 'assets/img/brand/logo_biat.png', width: 50, height: 50, alt: 'CoreUI Logo'}" routerLink="./"> 
+  <c-sidebar-brand [brandFull]="{ src: 'assets/img/brand/logo_biat.png', width: 50, height: 50, alt: 'CoreUI Logo'}"
+    routerLink="./">
   </c-sidebar-brand>
-  
-    <perfect-scrollbar [config]="perfectScrollbarConfig">
-  <c-sidebar-nav
-    [navItems]="navItems"
-  >
-  </c-sidebar-nav>
-    </perfect-scrollbar>
-  <c-sidebar-toggler
-    *ngIf="!sidebar.narrow"
-    toggle="unfoldable"
-    cSidebarToggle="sidebar"
-  ></c-sidebar-toggler>
+
+  <perfect-scrollbar [config]="perfectScrollbarConfig">
+    <!--  [perfectScrollbar]="perfectScrollbarConfig"-->
+    <c-sidebar-nav [navItems]="navItems">
+    </c-sidebar-nav>
+  </perfect-scrollbar>
+
+
+  <button (click)="openPopup()" cButton style="border: 0px; color: #303C54; background-color: #303C54; height: 50px;">
+    <svg cIcon name="cilSettings" size="lg" style="color: aliceblue; "></svg>
+  </button>
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: #303C54;">Configuration Sidebar Items</h4>
+        </div>
+        <div class="modal-body" style="background-color: rgb(240,240,240);">
+          <c-card class="mb-1">
+            <c-card-body>
+              <!---------add new menu item------------------>
+              <form #customStylesForm="ngForm" (ngSubmit)="onSubmit1()" [validated]="customStylesValidated" cForm class="row g-3 needs-validation" >
+                <c-col md="12">
+                  <label cLabel for="validationCustom01" style="color: #303C54;">Item name</label>
+                  <input cFormControl id="validationCustom01" required type="text"/>
+                  <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                </c-col>
+                <c-col md="6">
+                  <label cLabel for="validationCustom04" style="color: #303C54;">URL</label>
+                  <select cSelect id="validationCustom04" required>
+                    <option *ngFor="let url of urls">{{url.component}}</option>
+                  </select>
+                  <c-form-feedback [valid]="false" style="color: #303C54;">Please provide a valid url.</c-form-feedback>
+                </c-col>
+                <c-col md="6">
+                  <button (click)="openPopupicons()" cButton class="float-end" style="display: flex; align-items: center; border-radius: 20px; height: 70px; width: 70px; background-color:rgb(240,240,240); border-color:rgb(240,240,240);">
+                    <svg cIcon="" name="{{icon_name}}" class="icon" style="color: #303C54; height: 50px; width: 50px;"></svg>
+                  </button>
+                  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
+                    <div class="modal-dialog" role="document">
+                      <div  style="padding: 20px; background-color:  rgb(240,240,240); border-color:  rgb(240,240,240);" class="modal-content">
+                        <c-card>
+                          <c-card-body>
+                            <c-row class="text-center">
+                              <c-col *ngFor="let icon of keys(icons)" class="mb-1" md="3" sm="4" xl="2" xs="6">
+                                <button (click)="Enregistrericons(icon)" cButton class="float-end" style="border-radius: 20px; margin-top: 10px; background-color: #303C54; color:#3c4b64; border-color:#303C54;">
+                                  <svg cIcon="" name="{{icon}}" class="icon" style="color: white;"></svg>
+                                </button>
+                              </c-col>
+                            </c-row>
+                          </c-card-body>
+                        </c-card>
+                      </div>
+                    </div>
+                  </div>
+                  <c-form-feedback [valid]="false" style="color: #303C54;">Please provide a valid Icon.</c-form-feedback>
+                </c-col>
+                <c-col xs="12">
+                  <c-form-check>
+                    <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+                    <label cFormCheckLabel for="invalidCheck" style="color: #303C54;">check it</label>
+                  </c-form-check>
+                </c-col>
+                <c-col xs="12">
+                  <button cButton class="me-1" style="color: white; background-color: #303C54; border-color: #303C54;" type="submit">
+                    Submit form
+                  </button>
+                  <button (click)="onReset1()" cButton color="secondary" type="reset">
+                    Reset
+                  </button>
+                </c-col>
+              </form>
+              <!-------------------------------------------->
+            </c-card-body>
+          </c-card>
+          
+          <c-row ngPreserveWhitespaces>
+            <c-col xs="14" *ngFor="let menu of menus">
+              <c-card class="mb-1">
+                <c-card-body>
+                  <c-row>
+                    <c-col sm="10">
+                      <form #customStylesForm="ngForm" (ngSubmit)="onSubmit1()" [validated]="customStylesValidated" cForm class="row g-3 needs-validation" >
+                        <c-form-check>
+                          <input [(ngModel)]="checked" cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+                          <label cFormCheckLabel for="invalidCheck" style="font-weight: bold; color: #303C54;">{{menu.name}}</label>
+                        </c-form-check>
+                        <div *ngIf="checked"  class="w-100 p-3" style="border-radius: 20px; background-color: #eee;">
+                            <form (ngSubmit)="onSubmit1()" cForm class="row g-3 needs-validation" >
+                              <c-form-check *ngFor="let m of menu.listm">
+                                <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+                                <label cFormCheckLabel for="invalidCheck" style="color: #303C54;">{{m.name}}</label>
+                              </c-form-check>
+                            </form>
+                          </div>
+                      </form>
+                    </c-col>
+                    <c-col class="d-none d-md-block" sm="2">
+                      <button (click)="openPopupicons()" cButton class="float-end"
+                        style="border-radius: 20px; margin-top: 10px; background-color:#303C54; border-color:rgb(240,240,240);">
+                        <svg cIcon="" name="{{menu.iconcomponent}}" class="icon" style="color: white;"></svg>
+                      </button>
+                      <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
+                        <div class="modal-dialog" role="document">
+                          <div  style="padding: 20px; background-color:  rgb(240,240,240); border-color:  rgb(240,240,240);" class="modal-content">
+                            <c-card>
+                              <c-card-body>
+                                <c-row class="text-center">
+                                  <c-col *ngFor="let icon of keys(icons)" class="mb-1" md="3" sm="4" xl="2" xs="6">
+                                    <button (click)="Enregistrericons(icon)" cButton class="float-end" style="border-radius: 20px; margin-top: 10px; background-color: #303C54; color:#3c4b64; border-color:#303C54;">
+                                      <svg cIcon="" name="{{icon}}" class="icon" style="color: white;"></svg>
+                                    </button>
+                                  </c-col>
+                                </c-row>
+                              </c-card-body>
+                            </c-card>
+                          </div>
+                        </div>
+                      </div>
+                      <button cButton class="float-end"
+                        style="border-radius: 20px; margin-top: 10px; background-color: #303C54; color:#3c4b64; border-color:#303C54;">
+                        <svg cIcon="" name="cilPencil" class="icon" style="color: white;"></svg>
+                      </button>
+                    </c-col>
+                  </c-row>
+                </c-card-body>
+              </c-card>
+            </c-col>
+          </c-row>
+        </div>
+        <div class="modal-footer">
+          <button cButton class="mt-3" (click)="Enregistrer()"
+            style="background-color: #303C54; border-color:#303C54; color: white;">
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <c-sidebar-toggler *ngIf="!sidebar.narrow" toggle="unfoldable" cSidebarToggle="sidebar"></c-sidebar-toggler>
 </c-sidebar>
 
 <!--main-->
 <div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
   <!--app-header-->
-        <app-default-header class="mb-4 d-print-none header header-sticky c-container" sidebarId="sidebar">
-        </app-default-header>
+  <app-default-header class="mb-4 d-print-none header header-sticky" position="sticky"
+    sidebarId="sidebar"></app-default-header>
   <!--app-body-->
   <div class="body flex-grow-1 px-3">
     <c-container breakpoint="lg" class="h-auto">
       <router-outlet></router-outlet>
     </c-container>
-  </div> 
+  </div>
   <!--app footer-->
   <app-default-footer></app-default-footer>
 </div>

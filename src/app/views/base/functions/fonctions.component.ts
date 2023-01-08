@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import * as pbi from 'powerbi-client';
-import { environment } from 'src/environments/environment';
 import { Function } from './function.model';
 
 @Component({

@@ -12,28 +12,32 @@
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Nom d'utilisateur" />
+                  <input type="text" ngModel name="userName" id="userName" autoComplete="username" cFormControl
+                    placeholder="Nom d'utilisateur" />
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Mot de passe"
-                    type="password"
-                  />
+                  <input type="password" ngModel name="userPassword" id="userPassword" autoComplete="current-password"
+                    cFormControl placeholder="Mot de passe" type="password" />
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="ms-auto btn btn-primary rounded-pill ng-star-inserted" style="border-color: #3c4b64; background-color: #3c4b64; width: 150px;" routerLink="./../dashboard">
+                    <button cButton class="ms-auto btn btn-primary rounded-pill ng-star-inserted"
+                      style="border-color: #3c4b64; background-color: #3c4b64; width: 150px;"
+                      routerLink="./../dashboard">
                       Se Connecter
                     </button>
                   </c-col>
                   <c-col class="text-right" xs="6">
                     <button cButton class="px-0" style="color: #3c4b64; background-color: white; border: 0px;">
                       Mot de passe oublié ?
+                    </button>
+                  </c-col>
+                  <c-col class="text-right" xs="6">
+                    <button routerLink="../register" cButton class="px-0" style="color: red; background-color: white; border: 0px;">
+                      Register
                     </button>
                   </c-col>
                 </c-row>

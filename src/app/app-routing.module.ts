@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/base/login/login.component';
-
+import { RegisterComponent } from './views/base/register/register.component'
 import { DefaultLayoutComponent } from './containers';
 
 const routes: Routes = [
@@ -10,6 +10,13 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    data: {
+      title: 'Register Page'
     }
   },
   {

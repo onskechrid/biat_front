@@ -5,7 +5,6 @@ import { AddfonctionComponent } from './addfunction/addfonction.component';
 import { DatabaseComponent } from './database/database.component';
 import { EditfonctionComponent } from './editfunction/editfonction.component';
 import { FonctionsComponent } from './functions/fonctions.component';
-import { PowerbiComponent } from './powerbi/powerbi.component';
 import { TablesComponent } from './tables/tables.component';
 import { FilterComponent } from './filter/filter.component';
 import { HistoriqueComponent } from './history/historique.component';
@@ -64,13 +63,6 @@ const routes: Routes = [
         component: EditfonctionComponent,
         data: {
           title: 'Modifier une fonction'
-        }
-      },
-      {
-        path: 'powerbi',
-        component: PowerbiComponent,
-        data: {
-          title: 'Powerbi'
         }
       },
       {
