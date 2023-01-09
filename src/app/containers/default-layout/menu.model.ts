@@ -4,6 +4,5 @@ export class Menu{
     url : string;
     iconcomponent : string;
     listm : Menu[];
-    checked : boolean = false
     hidden : boolean = false
 }

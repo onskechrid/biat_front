@@ -3,6 +3,7 @@ import { Menu } from './menu.model';
 import { Url } from './url.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { navItems } from './_nav';
 import {FormBuilder} from '@angular/forms';
 import {IconSubset} from './../../icons/icon-subset';
 
@@ -19,7 +20,7 @@ export class DefaultLayoutComponent implements OnInit{
   menu: Menu;
   list : Menu[]=[];
 
-  public navItems = [];
+  
   checked :false;
 
   keys = Object.keys;
@@ -35,6 +36,8 @@ export class DefaultLayoutComponent implements OnInit{
   public perfectScrollbarConfig = {
     suppressScrollX: true
   };
+
+  public navItems= navItems;
   
   updateSidebar(){
     for(let y =0; y <=this.config_op.length-1; y++){
@@ -47,7 +50,6 @@ export class DefaultLayoutComponent implements OnInit{
         })
       } 
     }
-    console.log(this.navItems)
   }
 
   constructor(private router : Router, private http : HttpClient, private formBuilder: FormBuilder) {
@@ -55,6 +57,7 @@ export class DefaultLayoutComponent implements OnInit{
   displayStyle = "none";
   displayStyle1 = "none";
 
+  
 
   search_conf(id : number){
     for(let y =0; y <=this.config_op.length-1; y++){
