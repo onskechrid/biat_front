@@ -6,7 +6,6 @@
   </c-sidebar-brand>
 
   <perfect-scrollbar [config]="perfectScrollbarConfig">
-    <!--  [perfectScrollbar]="perfectScrollbarConfig"-->
     <c-sidebar-nav [navItems]="navItems">
     </c-sidebar-nav>
   </perfect-scrollbar>
@@ -88,13 +87,13 @@
                     <c-col sm="10">
                       <form #customStylesForm="ngForm" (ngSubmit)="onSubmit1()" [validated]="customStylesValidated" cForm class="row g-3 needs-validation" >
                         <c-form-check>
-                          <input [(ngModel)]="checked" cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+                          <input  (click)="cochi(menu.id, chh.checked)" #chh [checked]="search_conf(menu.id).hidden == false" cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
                           <label cFormCheckLabel for="invalidCheck" style="font-weight: bold; color: #303C54;">{{menu.name}}</label>
                         </c-form-check>
-                        <div *ngIf="checked"  class="w-100 p-3" style="border-radius: 20px; background-color: #eee;">
+                        <div  class="w-100 p-3" style="border-radius: 20px; background-color: #eee;">
                             <form (ngSubmit)="onSubmit1()" cForm class="row g-3 needs-validation" >
                               <c-form-check *ngFor="let m of menu.listm">
-                                <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+                                <input cFormCheckInput id="invalidCheck" (click)="cochi(m.id, ch.checked)" #ch name="invalidCheck" [checked]="search_conf(m.id).hidden == false" required type="checkbox" />
                                 <label cFormCheckLabel for="invalidCheck" style="color: #303C54;">{{m.name}}</label>
                               </c-form-check>
                             </form>
@@ -103,8 +102,8 @@
                     </c-col>
                     <c-col class="d-none d-md-block" sm="2">
                       <button (click)="openPopupicons()" cButton class="float-end"
-                        style="border-radius: 20px; margin-top: 10px; background-color:#303C54; border-color:rgb(240,240,240);">
-                        <svg cIcon="" name="{{menu.iconcomponent}}" class="icon" style="color: white;"></svg>
+                        style="border-radius: 20px; margin-top: 10px; background-color:rgb(240,240,240); border-color:rgb(240,240,240);">
+                        <svg cIcon="" name="{{menu.iconcomponent}}" class="icon" style="color: #303C54;"></svg>
                       </button>
                       <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
                         <div class="modal-dialog" role="document">
