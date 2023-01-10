@@ -10,6 +10,7 @@ import {
   PerfectScrollbarModule,
 } from 'ngx-perfect-scrollbar';
 
+import { HeadersInterceptor } from "../app/headers.interceptor"
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 
@@ -46,7 +47,7 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { LoginComponent } from './views/base/login/login.component';
 import { RegisterComponent } from './views/base/register/register.component'
@@ -102,6 +103,11 @@ const APP_CONTAINERS = [
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true
+     },
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,

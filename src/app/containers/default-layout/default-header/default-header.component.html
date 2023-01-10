@@ -41,7 +41,7 @@
   </ng-container>
   <ng-template #userDropdown>
     <c-dropdown alignment="end" variant="nav-item">
-      <a style="font-weight: bold; color: rgb(3, 197, 3);">NOM UTILISATEUR</a>
+      <a (click)="disconnect()" style="font-weight: bold; color: rgb(3, 197, 3);">{{user.userName }} </a>
     </c-dropdown>
   </ng-template>
   

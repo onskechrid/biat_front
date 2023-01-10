@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AccessToken } from '../../../models/AccessToken'
 
 @Component({
   selector: 'app-login',
@@ -9,30 +11,46 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
-    private router: Router
-  ) {}
+  LoginForm!:FormGroup;
+  submitted = false;
+
+  constructor(private formBuilder:FormBuilder,private http:HttpClient, private route:Router) {
+    console.log(localStorage.getItem('token'));
+  }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(localStorage.getItem('token') != null){
+      this.route.navigate(['dashboard']);
+      return;
+    }
+    this.LoginForm = this.formBuilder.group({
+      email:['',[Validators.required, Validators.email]],
+      password:['',[Validators.required, Validators.minLength(4)]]
+    })
 
-  /*login(loginForm: NgForm) {
-    this.userService.login(loginForm.value).subscribe(
-      (response: any) => {
-        this.userAuthService.setRoles(response.user.role);
-        this.userAuthService.setToken(response.jwtToken);
+  }
 
-        const role = response.user.role[0].roleName;
-        if (role === 'Admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/user']);
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.LoginForm.value);
+    
+    if (this.LoginForm.invalid) {
+      return;
+    }else{
+      console.log("Eeee");
+      
+      this.http.post<AccessToken>("/api/v1/auth/login", this.LoginForm.value).subscribe(res =>{
+        console.log(res);
+        
+        if(res != null){
+          localStorage.setItem('token', res.access_token);
+          this.route.navigate(['dashboard'])
+        }else{
+          this.route.navigate(['login']) 
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }*/
+      })
+    }
+  }
 
 }

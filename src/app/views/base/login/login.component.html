@@ -5,28 +5,27 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
+              <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" cForm>
                 <h1>Authentification</h1>
                 <p class="text-medium-emphasis">Connecter à votre compte</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input type="text" ngModel name="userName" id="userName" autoComplete="username" cFormControl
+                  <input formControlName="email" type="text" ngModel name="userName" id="userName" autoComplete="username" cFormControl
                     placeholder="Nom d'utilisateur" />
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input type="password" ngModel name="userPassword" id="userPassword" autoComplete="current-password"
+                  <input formControlName="password" type="password" ngModel name="userPassword" id="userPassword" autoComplete="current-password"
                     cFormControl placeholder="Mot de passe" type="password" />
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="ms-auto btn btn-primary rounded-pill ng-star-inserted"
-                      style="border-color: #3c4b64; background-color: #3c4b64; width: 150px;"
-                      routerLink="./../dashboard">
+                    <button type="submit" cButton class="ms-auto btn btn-primary rounded-pill ng-star-inserted"
+                      style="border-color: #3c4b64; background-color: #3c4b64; width: 150px;">
                       Se Connecter
                     </button>
                   </c-col>
